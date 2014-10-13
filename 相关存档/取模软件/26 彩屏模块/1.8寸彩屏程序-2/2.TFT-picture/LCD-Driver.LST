@@ -1,0 +1,224 @@
+C51 COMPILER V7.10   LCD_DRIVER                                                            05/04/2011 17:24:32 PAGE 1   
+
+
+C51 COMPILER V7.10, COMPILATION OF MODULE LCD_DRIVER
+OBJECT MODULE PLACED IN LCD-Driver.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LCD-Driver.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          /**********************************************************
+   3          *                                                                                         *
+   4          *                                  彩屏驱动程序                                                   *
+   5          *                                                                                                                 *
+   6          **********************************************************/
+   7          
+   8          #include <reg52.h>
+   9          #include <intrins.h>
+  10          #include "LCD.h"
+  11          #include "picture.h"
+  12          
+  13          
+  14          uint colors[]=
+  15          {
+  16            0xf800,0x07e0,0x001f,0xffe0,0x0000,0x07ff,0xf81f,0xffff
+  17          };
+  18          
+  19          /**********************************************************
+  20          
+  21           延时子函数
+  22          
+  23          **********************************************************/
+  24          void delay_ms(uint ms)
+  25          {
+  26   1        unsigned char k;
+  27   1      
+  28   1        while (ms--)
+  29   1        {
+  30   2          for (k = 0; k < 228; k++)
+  31   2            ;
+  32   2        }
+  33   1      }
+  34          
+  35          /**********************************************************
+  36          
+  37           写8位数据子函数
+  38          
+  39          **********************************************************/
+  40          void WriteDAT(uchar value)    // color data
+  41          {
+  42   1              LCD_CS =  0;
+  43   1              LCD_RS  = 1;
+  44   1      //      LCD_WR  = 0;
+  45   1              DATA    = value;
+  46   1          LCD_WR  = 0;
+  47   1              LCD_WR  = 1;
+  48   1              LCD_CS =  1;
+  49   1      }
+  50          
+  51          /**********************************************************
+  52          
+  53           写8位命令子函数
+  54          
+  55          **********************************************************/
+C51 COMPILER V7.10   LCD_DRIVER                                                            05/04/2011 17:24:32 PAGE 2   
+
+  56          void WriteCOM(uchar value)    // color data
+  57          {
+  58   1              LCD_CS  =  0;
+  59   1              LCD_RS  =  0;
+  60   1      //      LCD_WR  =  0;
+  61   1              DATA    =  value;
+  62   1              LCD_WR  =  0;
+  63   1              LCD_WR  =  1;
+  64   1              LCD_CS  =  1;
+  65   1      }
+  66          
+  67          
+  68          /**********************************************************
+  69          
+  70          设置显示窗口子函数
+  71          
+  72          **********************************************************/
+  73          void LCD_SetRamAddr(uint xStart, uint xEnd, uint yStart, uint yEnd) 
+  74          {
+  75   1              WriteCOM(0x2a);            //行
+  76   1              WriteDAT(xStart>>8);   //XS15-XS8
+  77   1              WriteDAT(xStart);          //XS7-XS0    (X start address)
+  78   1              WriteDAT(xEnd>>8);         //XE15-XE8
+  79   1              WriteDAT(xEnd);            //XE7-XE0    (X end address)
+  80   1      
+  81   1              WriteCOM(0x2b);            //列 row address set (RASET)
+  82   1              WriteDAT(yStart>>8);   //YS15-YS8
+  83   1              WriteDAT(yStart);          //YS7-YS0    (Y start address)
+  84   1              WriteDAT(yEnd>>8);         //YE15-YE8
+  85   1              WriteDAT(yEnd);            //YE7-YE0    (Y end address)
+  86   1      
+  87   1          WriteCOM(0x2c);                //display on 显示打开命令
+  88   1         
+  89   1      }
+  90          
+  91          
+  92          /**********************************************************/
+  93          void LCD_init(void)
+  94          {        //请看数据手册的命令部分 了解其个命令的功能
+  95   1              LCD_RST=1;
+  96   1              delay_ms(100);
+  97   1              LCD_RST=0;
+  98   1              delay_ms(100);
+  99   1              LCD_RST=1;
+ 100   1              delay_ms(100);
+ 101   1              
+ 102   1              WriteCOM(0x01);     //software reset软件复位
+ 103   1              delay_ms(100);
+ 104   1              WriteCOM(0x11);     //sleep out/power on(SLPOUT) 退出睡眠
+ 105   1              delay_ms(50);
+ 106   1              WriteCOM(0x20);         //display inversion off 关闭取反
+ 107   1              delay_ms(50);
+ 108   1              WriteCOM(0x38);     //ID mode off (IDMOFF)
+ 109   1              delay_ms(50);
+ 110   1              WriteCOM(0x13);     //Normal display mode on (Partial mode off)
+ 111   1              
+ 112   1              WriteCOM(0x3a);     //color mode Interface pixel format  (COLMOD)
+ 113   1              WriteDAT(0x05);         //16-bit/pixel , 1-times data transfer
+ 114   1              
+ 115   1              WriteCOM(0xc0);         //power control 1      (PWCTR1)
+ 116   1              WriteDAT(0x03);         //default value  LCM=0 set the GVDD voltage=4.65
+ 117   1              
+C51 COMPILER V7.10   LCD_DRIVER                                                            05/04/2011 17:24:32 PAGE 3   
+
+ 118   1              WriteCOM(0xc5);    
+ 119   1              WriteDAT(0xc8);    //VCOMH voltage set 4.300V
+ 120   1              
+ 121   1              WriteCOM(0xc6);
+ 122   1              WriteDAT(0x1f);    //VCOMAC voltage set 5.550V ;
+ 123   1              delay_ms(10);
+ 124   1              
+ 125   1              WriteCOM(0xfe);
+ 126   1              WriteDAT(0x00);
+ 127   1              WriteDAT(0x04);
+ 128   1              
+ 129   1              WriteCOM(0x26);    //gamma sel
+ 130   1              WriteDAT(0x04);
+ 131   1              
+ 132   1              
+ 133   1              WriteCOM(0x2a);    //column address set (CASET)
+ 134   1              WriteDAT(0x00);    //XS15-XS8
+ 135   1              WriteDAT(0x00);    //XS7-XS0    (X start address)
+ 136   1              WriteDAT(0x00);    //XE15-XE8
+ 137   1              WriteDAT(0x7f);    //XE7-XE0    (X end address)
+ 138   1              
+ 139   1              WriteCOM(0x2b);    //row address set (RASET)
+ 140   1              WriteDAT(0x00);    //YS15-YS8
+ 141   1              WriteDAT(0x00);    //YS7-YS0    (Y start address)
+ 142   1              WriteDAT(0x00);    //YE15-YE8
+ 143   1              WriteDAT(0x9f);    //YE7-YE0    (Y end address)
+ 144   1              
+ 145   1              WriteCOM(0x36);    //memory data access control  (MADCTR)
+ 146   1              WriteDAT(0xc0);
+ 147   1              
+ 148   1              WriteCOM(0x29);   // display on
+ 149   1      
+ 150   1       
+ 151   1      }
+ 152          /**********************************************************
+ 153          
+ 154           清屏子函数
+ 155          
+ 156          **********************************************************/
+ 157          void  LCD_clear(uchar n)
+ 158          {
+ 159   1         uint num;
+ 160   1         
+ 161   1         LCD_SetRamAddr(0,127, 0,159);  //设置显示的坐标
+ 162   1      
+ 163   1         for(num=20480;num>0;num--)          //160*128=20480
+ 164   1         {
+ 165   2               WriteDAT(colors[n]>>8);   //高8位
+ 166   2               WriteDAT(colors[n]);      //低8位
+ 167   2         }
+ 168   1      }
+ 169          
+ 170          
+ 171          /**********************************************************
+ 172          
+ 173           图片显示子函数
+ 174          
+ 175          **********************************************************/
+ 176          void  pic_play(uint Start_X, uint End_X,uint Start_Y,uint End_Y)
+ 177          {
+ 178   1         uint m;
+ 179   1      
+C51 COMPILER V7.10   LCD_DRIVER                                                            05/04/2011 17:24:32 PAGE 4   
+
+ 180   1         LCD_CS = 0;
+ 181   1         LCD_SetRamAddr(Start_X,End_X-1,Start_Y,End_Y-1) ;   //设置地址
+ 182   1         LCD_RS       = 1; 
+ 183   1      
+ 184   1      
+ 185   1         for(m=0; m<(7128/2); m++)    
+ 186   1         {            
+ 187   2            WriteDAT(Image_pic[m*2+1]);       //高位在前
+ 188   2                WriteDAT(Image_pic[m*2]);     //低位在后
+ 189   2      
+ 190   2         }
+ 191   1         LCD_CS = 1;
+ 192   1      
+ 193   1      }
+ 194          
+ 195          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    440    ----
+   CONSTANT SIZE    =   7128    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     16      16
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

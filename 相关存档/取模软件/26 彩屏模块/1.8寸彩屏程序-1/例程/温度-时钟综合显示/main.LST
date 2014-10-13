@@ -1,0 +1,160 @@
+C51 COMPILER V7.10   MAIN                                                                  02/20/2011 19:10:29 PAGE 1   
+
+
+C51 COMPILER V7.10, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /**********************************************************************
+   2          *                                                                     *
+   3          *           TFT液晶红温度和时钟综合显示程序                           *
+   4          *              （  普中科技  ）                                       *
+   5          *                                                                     *
+   6          * 实验目的：1.掌握TFT彩屏驱动程序的编写、                                                         *
+   7          *           2.学会运用取字模软件应用(取字符和汉字数组)                            *
+   8          *                       3.学会怎样处理字模数组数据                                *
+   9          *                                                                     *                                   
+             -                                  *
+  10          *实验现象： 彩屏中显示温度和时钟                                      *
+  11          *                                                                     *
+  12          ***********************************************************************/
+  13          
+  14          #include <reg52.h>
+  15          #include <intrins.h>
+  16          #include "lcd.h"
+  17          
+  18          
+  19          unsigned char   Tempera_Val[3] ,temp;  //温度
+  20          unsigned char   RTC_Val[15];          //时钟数组
+  21          unsigned int xdata TIM,TIM1;    //用于间隔读取温度和时钟
+  22          extern unsigned int  idata Temperature;  //温度
+  23          extern unsigned  char xdata D[8];    //读取时钟放到D数组中
+  24          
+  25          extern void Read_RTC(void);
+  26          extern void GetTemp (void);
+  27          extern void Set_RTC(void); //set RTC 
+  28          
+  29          
+  30          /**********************************************************
+  31                   配置定时器参数
+  32           **********************************************************/
+  33          void Timer_Ini()
+  34          {
+  35   1          TMOD|= 0x11;
+  36   1          TH1 = 0xD8;    //10
+  37   1          TL1 = 0xF0; 
+  38   1              IE = 0x8A;      
+  39   1          TR1  = 1;
+  40   1      }
+  41          
+  42          /**********************************************************
+  43          
+  44            主函数
+  45          
+  46          **********************************************************/
+  47          void main(void)
+  48          {  
+  49   1          P2 = 0xff;
+  50   1          P0 = 0xff;
+  51   1      
+  52   1              Timer_Ini();     //初始化
+  53   1          LCD_init();      //初始化
+  54   1          LCD_clear(5);    //清屏
+C51 COMPILER V7.10   MAIN                                                                  02/20/2011 19:10:29 PAGE 2   
+
+  55   1        
+  56   1          ChineseChar(14,10,2,colors[2],colors[7],1);   //普
+  57   1          ChineseChar(38,10,2,colors[2],colors[7],2);   //中
+  58   1          ChineseChar(62,10,2,colors[2],colors[7],3);   //科
+  59   1          ChineseChar(86,10,2,colors[2],colors[7],4);   //技
+  60   1        
+  61   1          ChineseChar(24,50,1,colors[2],colors[7],10);  //温
+  62   1              ChineseChar(40,50,1,colors[2],colors[7],11);  //度
+  63   1          ChineseChar(80,50,1,colors[2],colors[7],12);  //℃
+  64   1      
+  65   1          ChineseChar(30,80,1,colors[2],colors[7],13);  //实
+  66   1              ChineseChar(46,80,1,colors[2],colors[7],14);  //时
+  67   1              ChineseChar(62,80,1,colors[2],colors[7],14);  //时
+  68   1          ChineseChar(76,80,1,colors[2],colors[7],15);  //钟
+  69   1         
+  70   1              Set_RTC();
+  71   1      
+  72   1         while(1)     
+  73   1        {       
+  74   2            if( TIM1 >= 10)  //每隔 10ms 读取ds1302
+  75   2                {
+  76   3                  TIM1  =  0;
+  77   3                      Read_RTC();  //读取DS1302
+  78   3                }
+  79   2              GetTemp();
+  80   2                      //*****温度***********************
+  81   2              Tempera_Val[0] = Temperature%100/10 + 0x30;    //Temperature;
+  82   2              Tempera_Val[1] = Temperature%10 + 0x30;
+  83   2      
+  84   2                      //******月***********************
+  85   2                      temp =   ((D[4]&0x70)>>4)*10 + (D[4]&0x0f);       
+  86   2                      RTC_Val[0] = temp/10 + 0x30;     //将10位转成ASCII码
+  87   2                      RTC_Val[1] = temp%10 + 0x30;     //将个位转成ASCII码
+  88   2                      
+  89   2                      RTC_Val[2] = '-'  ;          //短横线
+  90   2                       //*****日***********************
+  91   2                      temp =   ((D[3]&0x70)>>4)*10 + (D[3]&0x0f);       
+  92   2                      RTC_Val[3] =  temp/10 + 0x30;
+  93   2                      RTC_Val[4] =  temp%10 + 0x30;
+  94   2                      RTC_Val[5] = ' '  ;
+  95   2                      //******时***********************
+  96   2                      temp =   ((D[2]&0x70)>>4)*10 + (D[2]&0x0f);        
+  97   2                      RTC_Val[6] = temp/10 + 0x30;
+  98   2                      RTC_Val[7] = temp%10 + 0x30;
+  99   2      
+ 100   2                      RTC_Val[8] = ':'        ;         //冒号
+ 101   2                       //******分***********************
+ 102   2                      temp =   ((D[1]&0x70)>>4)*10 + (D[1]&0x0f);       
+ 103   2                      RTC_Val[9] =  temp/10 + 0x30;
+ 104   2                      RTC_Val[10] = temp%10 + 0x30;
+ 105   2      
+ 106   2                      RTC_Val[11] = ':';
+ 107   2                       //******秒***********************
+ 108   2                  temp =   ((D[0]&0x70)>>4)*10 + (D[0]&0x0f);         
+ 109   2                      RTC_Val[12] = temp/10 + 0x30;
+ 110   2                      RTC_Val[13] = temp%10 + 0x30;
+ 111   2      
+ 112   2                         
+ 113   2                  LCD_ShowString(60,50,colors[7],colors[2], Tempera_Val); //将字符送到彩屏中显示
+ 114   2                      LCD_ShowString(10,100,colors[7],colors[2], RTC_Val);     //将字符送到彩屏中显示
+ 115   2      
+ 116   2        }  
+C51 COMPILER V7.10   MAIN                                                                  02/20/2011 19:10:29 PAGE 3   
+
+ 117   1      }
+ 118          
+ 119          
+ 120          /*************************************
+ 121           [ t1 (10ms)中断] 中断
+ 122          *************************************/
+ 123          void T1zd(void) interrupt 3 
+ 124          {
+ 125   1         TH1 = 0xD8;    //10
+ 126   1         TL1 = 0xF0;
+ 127   1         TIM++;
+ 128   1         TIM1++;
+ 129   1      }
+ 130          
+ 131          
+ 132          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    760    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      4    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     19    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

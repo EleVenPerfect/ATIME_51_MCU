@@ -1,0 +1,17 @@
+1.STC89系列默认选择stc89c58rd。
+2.STC12系列默认选择stc12c5a60s2。
+3.STC15系列默认选择stc15f2k60s2。
+
+需要设置库函数位置：
+1.在atime_main.c上右击，选择options for "atime_main.c"
+2.选择C51选项卡，选择倒数第三个框“include path”,更改为你所用的库目录位置。
+
+
+添加STC单片机方法：
+1.下载最新的STC-ISP日软件
+2.选择右侧选项卡的KEIL仿真设置
+3.选择添加MCU型号到KEIL中。
+
+
+建立工程时选择STC data sheet 选择所需的单片机即可。
+

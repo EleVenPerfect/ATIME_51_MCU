@@ -1,0 +1,33 @@
+C51 COMPILER V9.01   ATIME_MAIN                                                            08/30/2014 20:12:34 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ATIME_MAIN
+OBJECT MODULE PLACED IN atime_main.OBJ
+COMPILER INVOKED BY: C:\Program Files (x86)\keil\C51\BIN\C51.EXE atime_main.c BROWSE INCDIR(..\库目录) DEBUG OBJECTEXTEN
+                    -D
+
+line level    source
+
+   1          #include "STC89C5xRC.H"          //可以替换REG52.H，建议使用这个头文件
+   2          #include "atime_interrupt.c" //中断函数集合，存放中断函数，不需要可以不载入      
+   3          #include "atime_timer.h"         //中断配套函数库，如果需要调用中断相关子函数，需要载入
+   4          #include "atime_lcd1602.h"       //需要载入其他文件自行载入     
+   5          
+   6          void main()
+   7          {
+   8   1      
+   9   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1221    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      32
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

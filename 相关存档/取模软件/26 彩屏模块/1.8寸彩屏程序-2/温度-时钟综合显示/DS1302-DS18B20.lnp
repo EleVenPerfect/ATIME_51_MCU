@@ -1,0 +1,7 @@
+"STARTUP.obj",
+"main.obj",
+"Lcd.obj",
+"ds1302.obj",
+"Temp.obj" 
+TO "DS1302-DS18B20" 
+RAMSIZE(256) 
