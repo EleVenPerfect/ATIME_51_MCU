@@ -176,13 +176,39 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>13</TopLine>
-      <CurrentLine>13</CurrentLine>
+      <TopLine>25</TopLine>
+      <CurrentLine>25</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\atime_main.c</PathWithFileName>
       <FilenameWithoutPath>atime_main.c</FilenameWithoutPath>
     </File>
   </Group>
+
+  <AlienFiles>
+    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME12库\库目录\ATIME_18B20.H</PathWithFilename>
+    <TopLine>49</TopLine>
+    <CurrentLine>57</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
 
   <AlienFiles>
     <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME12库\库目录\ATIME_LCD1602.H</PathWithFilename>
@@ -214,32 +240,6 @@
     <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME12库\工程目录\ATIME_INTERRUPT.C</PathWithFilename>
     <TopLine>25</TopLine>
     <CurrentLine>31</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME12库\库目录\ATIME_18B20.H</PathWithFilename>
-    <TopLine>49</TopLine>
-    <CurrentLine>57</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1603,13 +1603,13 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>1</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\atime_main.c</Name>
           <ColumnNumber>0</ColumnNumber>
-          <TopLine>13</TopLine>
-          <CurrentLine>13</CurrentLine>
+          <TopLine>25</TopLine>
+          <CurrentLine>25</CurrentLine>
         </Doc>
         <Doc>
           <Name>ATIME_INTERRUPT.C</Name>
