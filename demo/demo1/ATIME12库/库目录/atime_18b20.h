@@ -1,7 +1,7 @@
 /************************************
 库功能：51单片机18B20测温函数库
 库要求：主函数中已定义：
-		#include <reg52.h>
+		#include "STC12C5A60S2.H"
 应用函数：
 			translate(float i,unsigned char r[8])
 			read_temper()
@@ -11,8 +11,7 @@
 最后修改时间：2013-02-04
 作者： ATIME	版权所有
 实例程序：
-			#include <reg52.h>
-			#include <string.h>
+			#include "STC12C5A60S2.H"
 			#include "atime_lcd1602.h"
 			#include "atime_18b20.h"
 			
@@ -25,7 +24,7 @@
 				while(1)
 				{
 					j =int_18b20();
-					if(j == 0)
+					if(j ==0)
 					{
 						i =read_temper();
 						translate(i,a);
@@ -55,7 +54,7 @@
 库全局变量组
 ***************************************/
 
-sbit  PIN_DQ =P3^3;			//定义18B20的DQ引脚所在I/O口
+sbit  PIN_DQ =P1^0;			//定义18B20的DQ引脚所在I/O口
 
 /************************************
 函数功能：初始化18B20
@@ -65,16 +64,17 @@ sbit  PIN_DQ =P3^3;			//定义18B20的DQ引脚所在I/O口
 bit int_18b20(void)
 {
 	bit a;                         //存储是否检测到DS18B20，0存在，1不存在
-	unsigned char i;
+	unsigned int i;
 	PIN_DQ =1;
-	for(i=0; i<2; i++);
+	for(i=0; i<14; i++);
 	PIN_DQ =0;
-	for(i=0; i<200; i++);
+	for(i=0; i<1400; i++);
 	PIN_DQ =1;
-	for(i=0; i<10; i++);
+	for(i=0; i<70; i++);
 	a =PIN_DQ;
-	for(i=0; i<200; i++);
+	for(i=0; i<1400; i++);
 	PIN_DQ =1;
+	for(i=0; i<14; i++);
 	return (a);
 }
 
@@ -91,15 +91,15 @@ void write_18b20(unsigned char a)
 	for(i=8; i>0; i--)
 	{
 		PIN_DQ =1;
-		for(j=0; j<=0; j++);
+		for(j=0; j<=7; j++);
 		PIN_DQ =0;
 		PIN_DQ =a&0x01;
-		for(j=0; j<=10; j++);
+		for(j=0; j<=70; j++);
 		PIN_DQ =1;
-		for(j=0; j<1; j++);
+		for(j=0; j<7; j++);
 		a >>=1;
 	}
-	for(j=0; j<4; j++);
+	for(j=0; j<28; j++);
 }
 
 
@@ -115,15 +115,15 @@ unsigned char read_18b20(void)
 	for(i=8; i>0; i--)
 	{
 		PIN_DQ =1;
-		for(j=0; j<=0; j++);
+		for(j=0; j<=7; j++);
 		PIN_DQ =0;
 		a >>=1;
-		for(j=0; j<=0; j++);
+		for(j=0; j<=7; j++);
 		PIN_DQ =1;
-		for(j=0; j<2; j++);
+		for(j=0; j<14; j++);
 		if(PIN_DQ ==1)
 			a =a|0x80;
-		for(j=0; j<8; j++);
+		for(j=0; j<56; j++);
 	}
 	return (a);
 }
