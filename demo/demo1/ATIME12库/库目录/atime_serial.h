@@ -62,6 +62,24 @@ enum serial_baud_rate{ baud28800, baud38400, baud9600, baud14400, baud7200, baud
 
 
 
+/************************************
+函数功能：延时大约n 毫秒ms
+传递参数：n 时间
+返回值：空	
+注意：此函数不能精确定时
+***************************************/
+void wait__ms(unsigned int n)
+{
+	int i;
+	while(n--)
+	{
+		for(i=0; i<580; i++)		  //89系列选择75,12系列选择750
+		{
+			;
+		}	
+	}
+}
+
 
 /************************************
 函数功能：串口发送一个字符
@@ -84,9 +102,12 @@ void send_char(unsigned char a)
 ***************************************/
 void send_serial(unsigned char a[])
 {
-	unsigned int i=0;
-	for(i=0; a[i]!=0x00; i++)
+	unsigned int i;
+	for(i=0; a[i]!='\0'; i++)
+	{	 	  		
+		wait__ms(10);
 		send_char(a[i]);
+	}
 }
 
 

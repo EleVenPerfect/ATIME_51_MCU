@@ -32,7 +32,7 @@
 		{
 			char db[10]={"A T I M E"};
 			int_lcd1602(rightmove, cursornotdisplay);
-			print1602(db, 1, 6);							//	可以引用数组
+			print1602(db, 2, 6);							//	可以引用数组
 			print1602("EleVenPerfect", 1, 3);				//	可以引用字符串
 
 			waitms(1000);
@@ -228,7 +228,7 @@ unsigned char int_lcd1602(enum lcdint_ac a,enum lcdint_cursor b)
 unsigned int str_long(unsigned char db[])
 {
 	unsigned int i;
-	for(i =0; db[i] !=0; i++) ;
+	for(i =0; db[i] !='\0'; i++) ;
 	return (i);
 }
 
