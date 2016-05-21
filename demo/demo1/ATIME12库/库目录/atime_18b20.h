@@ -4,7 +4,7 @@
 		#include "STC12C5A60S2.H"
 应用函数：
 			translate(float i,unsigned char r[8])
-			read_temper()
+			read_temper_1()
 修改历史：
 		   	 ‘修改人’   ‘修改内容’  ‘修改时间’
 				空			空			空
@@ -23,10 +23,10 @@
 				int_lcd1602(rightmove, cursornotdisplay);
 				while(1)
 				{
-					j =int_18b20();
+					j =int_18b20_1();
 					if(j ==0)
 					{
-						i =read_temper();
+						i =read_temper_1();
 						translate(i,a);
 						set1602(clear1602);
 						print1602(a,1,3);
@@ -54,26 +54,28 @@
 库全局变量组
 ***************************************/
 
-sbit  PIN_DQ =P1^0;			//定义18B20的DQ引脚所在I/O口
+sbit  PIN_DQ_1 =P1^0;			//定义18B20的DQ引脚所在I/O口
+sbit  PIN_DQ_2 =P1^1;			//定义18B20的DQ引脚所在I/O口
+
 
 /************************************
 函数功能：初始化18B20
 传递参数：空
 返回值：0：成功，1：失败	
 ***************************************/
-bit int_18b20(void)
+bit int_18b20_1(void)
 {
 	bit a;                         //存储是否检测到DS18B20，0存在，1不存在
 	unsigned int i;
-	PIN_DQ =1;
+	PIN_DQ_1 =1;
 	for(i=0; i<14; i++);
-	PIN_DQ =0;
+	PIN_DQ_1 =0;
 	for(i=0; i<1400; i++);
-	PIN_DQ =1;
+	PIN_DQ_1 =1;
 	for(i=0; i<70; i++);
-	a =PIN_DQ;
+	a =PIN_DQ_1;
 	for(i=0; i<1400; i++);
-	PIN_DQ =1;
+	PIN_DQ_1 =1;
 	for(i=0; i<14; i++);
 	return (a);
 }
@@ -85,17 +87,17 @@ bit int_18b20(void)
 传递参数：a：待发送数据
 返回值：空	
 ***************************************/
-void write_18b20(unsigned char a)
+void write_18b20_1(unsigned char a)
 {
 	unsigned char i,j;
 	for(i=8; i>0; i--)
 	{
-		PIN_DQ =1;
+		PIN_DQ_1 =1;
 		for(j=0; j<=7; j++);
-		PIN_DQ =0;
-		PIN_DQ =a&0x01;
+		PIN_DQ_1 =0;
+		PIN_DQ_1 =a&0x01;
 		for(j=0; j<=70; j++);
-		PIN_DQ =1;
+		PIN_DQ_1 =1;
 		for(j=0; j<7; j++);
 		a >>=1;
 	}
@@ -109,19 +111,19 @@ void write_18b20(unsigned char a)
 传递参数：空
 返回值：a:读回的数据	
 ***************************************/
-unsigned char read_18b20(void)
+unsigned char read_18b20_1(void)
 {
 	unsigned char i,j,a =0x00;
 	for(i=8; i>0; i--)
 	{
-		PIN_DQ =1;
+		PIN_DQ_1 =1;
 		for(j=0; j<=7; j++);
-		PIN_DQ =0;
+		PIN_DQ_1 =0;
 		a >>=1;
 		for(j=0; j<=7; j++);
-		PIN_DQ =1;
+		PIN_DQ_1 =1;
 		for(j=0; j<14; j++);
-		if(PIN_DQ ==1)
+		if(PIN_DQ_1 ==1)
 			a =a|0x80;
 		for(j=0; j<56; j++);
 	}
@@ -137,28 +139,149 @@ unsigned char read_18b20(void)
 注意：读取温度过程中不允许中断，运行完本函数后如果需要中断申请
 	  需要重新开启总中断（EA）。	
 ***************************************/
-float read_temper(void)
+float read_temper_1(void)
 {
 	float temper;
 	unsigned char high,low;
 	unsigned int i;
+	bit ea_temp;
+	ea_temp = EA;
 	EA =0;			 //读取温度过程中不允许中断，防止读取错误。
-	int_18b20();
-	write_18b20(0xcc);
-	write_18b20(0x44);
+	int_18b20_1();
+	write_18b20_1(0xcc);
+	write_18b20_1(0x44);
 	for(i=0; i<6500; i++);
 
-	int_18b20();
-	write_18b20(0xcc);
-	write_18b20(0xbe);
+	int_18b20_1();
+	write_18b20_1(0xcc);
+	write_18b20_1(0xbe);
 	
-	low =read_18b20();
-	high =read_18b20();
+	low =read_18b20_1();
+	high =read_18b20_1();
+
+	EA = ea_temp;
 /*
 serial_int(enable, baud14400, disable);
 send_char(high);					//检测程序是否能取得联系可以串口通信
 send_char(low);						//已经设置14400波特率11.0592M晶振
 */
+	if(high >248)
+	{
+		high =~high;
+		low =~low;
+		temper =(-0.0625)*(low+1+256.0*high);
+	}
+	else
+		temper =0.0625*(low+256.0*high);
+
+	return (temper);
+}
+
+
+/************************************
+函数功能：初始化18B20
+传递参数：空
+返回值：0：成功，1：失败	
+***************************************/
+bit int_18b20_2(void)
+{
+	bit a;                         //存储是否检测到DS18B20，0存在，1不存在
+	unsigned int i;
+	PIN_DQ_2 =1;
+	for(i=0; i<14; i++);
+	PIN_DQ_2 =0;
+	for(i=0; i<1400; i++);
+	PIN_DQ_2 =1;
+	for(i=0; i<70; i++);
+	a =PIN_DQ_2;
+	for(i=0; i<1400; i++);
+	PIN_DQ_2 =1;
+	for(i=0; i<14; i++);
+	return (a);
+}
+
+
+
+/************************************
+函数功能：向18B20写一字节
+传递参数：a：待发送数据
+返回值：空	
+***************************************/
+void write_18b20_2(unsigned char a)
+{
+	unsigned char i,j;
+	for(i=8; i>0; i--)
+	{
+		PIN_DQ_2 =1;
+		for(j=0; j<=7; j++);
+		PIN_DQ_2 =0;
+		PIN_DQ_2 =a&0x01;
+		for(j=0; j<=70; j++);
+		PIN_DQ_2 =1;
+		for(j=0; j<7; j++);
+		a >>=1;
+	}
+	for(j=0; j<28; j++);
+}
+
+
+
+/************************************
+函数功能：从18B20读一字节
+传递参数：空
+返回值：a:读回的数据	
+***************************************/
+unsigned char read_18b20_2(void)
+{
+	unsigned char i,j,a =0x00;
+	for(i=8; i>0; i--)
+	{
+		PIN_DQ_2 =1;
+		for(j=0; j<=7; j++);
+		PIN_DQ_2 =0;
+		a >>=1;
+		for(j=0; j<=7; j++);
+		PIN_DQ_2 =1;
+		for(j=0; j<14; j++);
+		if(PIN_DQ_2 ==1)
+			a =a|0x80;
+		for(j=0; j<56; j++);
+	}
+	return (a);
+}
+
+
+
+/************************************
+函数功能：读取温度
+传递参数：空
+返回值：浮点数值的温度值
+注意：读取温度过程中不允许中断，运行完本函数后如果需要中断申请
+	  需要重新开启总中断（EA）。	
+***************************************/
+float read_temper_2(void)
+{
+	float temper;
+	unsigned char high,low;
+	unsigned int i;
+	bit ea_temp;
+	ea_temp = EA;
+	EA =0;				 //读取温度过程中不允许中断，防止读取错误。
+	int_18b20_2();
+	write_18b20_2(0xcc);
+	write_18b20_2(0x44);
+	for(i=0; i<6500; i++);
+
+	int_18b20_2();
+	write_18b20_2(0xcc);
+	write_18b20_2(0xbe);
+	
+	low =read_18b20_2();
+	high =read_18b20_2();
+
+	
+	EA = ea_temp;
+
 	if(high >248)
 	{
 		high =~high;

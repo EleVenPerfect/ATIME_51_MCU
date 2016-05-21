@@ -26,8 +26,14 @@
 ***************************************/
 
 /************************************
-库全局变量组
+中断可用全局变量组
 ***************************************/
+unsigned char temp_set=30;	//设置初始温度
+float temperature1;
+float temperature2;
+sbit jdq_1 = P3^6;
+sbit jdq_2 = P3^7; 
+int aaa = 0;	//分频定时器用
 
 
 /************************************
@@ -38,7 +44,9 @@
 ***************************************/
 void interrupt_int0(void) interrupt 0
 {
-
+	temp_set++;
+	if(temp_set>50)
+		temp_set = 50;
 }
 
 
@@ -50,7 +58,41 @@ void interrupt_int0(void) interrupt 0
 ***************************************/
 void interrupt_timer0(void) interrupt 1
 {
-	P1 =~P1;				
+	unsigned char temp_average;
+	unsigned char distance;
+	
+	aaa++;
+	if(aaa>60000)
+	{
+		aaa=0;
+
+		temp_average = (unsigned char)((temperature1+temperature2)/2);
+		if(temp_average>temp_set)
+		{
+			distance = temp_average - temp_set;	
+			if( distance>3 )     //检测实际温度平均值如果大于3则启动降温程序
+			{
+				jdq_1 = 1;		 //低电平触发散热
+			}
+			else
+			{
+				jdq_1 = 0;
+			}
+		}
+		else
+		{
+			distance = temp_set - temp_average;
+			if( distance>3 )	 //检测实际温度平均值如果大于3则启动升温程序
+			{
+				jdq_2 = 1;        //高电平触发发热
+			}
+			else
+			{
+				jdq_2 = 0;	
+			}
+		}		
+	
+	}		
 }
 
 
@@ -63,7 +105,9 @@ void interrupt_timer0(void) interrupt 1
 ***************************************/
 void interrupt_int1(void) interrupt 2
 {
-	
+	temp_set--;	
+	if(temp_set<10)
+		temp_set = 10;	   
 }
 
 
@@ -88,7 +132,27 @@ void interrupt_timer1(void) interrupt 3
 ***************************************/
 void interrupt_serial1(void) interrupt 4
 {
+	unsigned char k;
+	k =receive_char();
+	printchar1602(k , 1, 15);
+	if(k=='A')
+	{
+		temp_set++;
+		if(temp_set>50)
+			temp_set = 50;
+	}
+	if(k=='B')
+	{
+		temp_set--;	
+		if(temp_set<10)
+			temp_set = 10;		
+	}
 
+	send_char(k);
+	send_char(' ');
+	send_char('O');
+	send_char('K');
+	send_char('\n');
 }	
 
 
