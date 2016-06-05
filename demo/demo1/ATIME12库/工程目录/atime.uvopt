@@ -174,10 +174,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>40</ColumnNumber>
+      <ColumnNumber>10</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>13</TopLine>
-      <CurrentLine>13</CurrentLine>
+      <CurrentLine>14</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\atime_main.c</PathWithFileName>
       <FilenameWithoutPath>atime_main.c</FilenameWithoutPath>
@@ -185,9 +185,9 @@
   </Group>
 
   <AlienFiles>
-    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo1\ATIME12库\工程目录\ATIME_INTERRUPT.C</PathWithFilename>
-    <TopLine>143</TopLine>
-    <CurrentLine>147</CurrentLine>
+    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo1\ATIME12库\库目录\ATIME_TIMER.H</PathWithFilename>
+    <TopLine>174</TopLine>
+    <CurrentLine>174</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -211,9 +211,9 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo1\ATIME12库\库目录\ATIME_TIMER.H</PathWithFilename>
-    <TopLine>174</TopLine>
-    <CurrentLine>174</CurrentLine>
+    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo1\ATIME12库\工程目录\ATIME_INTERRUPT.C</PathWithFilename>
+    <TopLine>1</TopLine>
+    <CurrentLine>1</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1577,19 +1577,19 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>1</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\atime_main.c</Name>
-          <ColumnNumber>40</ColumnNumber>
+          <ColumnNumber>10</ColumnNumber>
           <TopLine>13</TopLine>
-          <CurrentLine>13</CurrentLine>
+          <CurrentLine>14</CurrentLine>
         </Doc>
         <Doc>
           <Name>ATIME_INTERRUPT.C</Name>
-          <ColumnNumber>39</ColumnNumber>
-          <TopLine>143</TopLine>
-          <CurrentLine>147</CurrentLine>
+          <ColumnNumber>25</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>1</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\库目录\ATIME_TIMER.H</Name>

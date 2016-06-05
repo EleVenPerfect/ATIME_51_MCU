@@ -179,8 +179,8 @@
 
   <AlienFiles>
     <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo3\ATIME89库\工程目录\ATIME_INTERRUPT.C</PathWithFilename>
-    <TopLine>56</TopLine>
-    <CurrentLine>72</CurrentLine>
+    <TopLine>44</TopLine>
+    <CurrentLine>44</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1544,7 +1544,7 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>1</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\atime_main.c</Name>
@@ -1555,8 +1555,8 @@
         <Doc>
           <Name>ATIME_INTERRUPT.C</Name>
           <ColumnNumber>17</ColumnNumber>
-          <TopLine>56</TopLine>
-          <CurrentLine>72</CurrentLine>
+          <TopLine>44</TopLine>
+          <CurrentLine>44</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>
