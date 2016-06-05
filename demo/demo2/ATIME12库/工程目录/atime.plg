@@ -1,0 +1,261 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME12¿â\¹¤³ÌÄ¿Â¼\atime.uvproj
+Project File Date:  05/08/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling atime_main.c...
+atime_main.c(1): warning C318: can't open file 'STC89C5xRC.H'
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(58): error C202: 'P1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(59): error C202: 'P1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(60): error C202: 'P1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(61): error C202: 'P2': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(96): error C202: 'RS': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(97): error C202: 'RW': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(98): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(100): error C202: 'BF': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(101): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(114): error C202: 'RS': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(115): error C202: 'RW': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(116): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(117): error C202: 'P2': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(119): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(121): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(135): error C202: 'RS': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(136): error C202: 'RW': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(137): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(138): error C202: 'P2': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(140): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(142): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(165): error C202: 'EX0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(182): error C202: 'RS': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(183): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(184): error C202: 'P2': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(186): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(188): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(189): error C202: 'P2': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(191): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(193): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(194): error C202: 'P2': undefined identifier
+..\¿âÄ¿Â¼\ATIME_LCD1602.H(196): error C202: 'EN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(57): error C202: 'P3': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(68): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(70): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(72): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(74): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(76): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(93): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(95): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(96): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(98): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(117): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(119): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(122): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(124): error C202: 'PIN_DQ': undefined identifier
+..\¿âÄ¿Â¼\ATIME_18B20.H(145): error C202: 'EA': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(73): error C202: 'SBUF': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(74): error C202: 'TI': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(75): error C202: 'TI': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(103): error C202: 'RI': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(105): error C202: 'RI': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(106): error C202: 'SBUF': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(123): error C202: 'AUXR': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(124): error C202: 'AUXR': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(128): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(129): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(130): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(131): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(132): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(133): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(134): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(135): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(136): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(137): error C202: 'BRT': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(141): error C202: 'TR1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(142): error C202: 'ET1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(143): error C202: 'EA': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(144): error C202: 'SM0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(145): error C202: 'SM1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(148): error C202: 'REN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(149): error C202: 'ES': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(153): error C202: 'REN': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(154): error C202: 'ES': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(157): error C202: 'PCON': undefined identifier
+..\¿âÄ¿Â¼\ATIME_SERIAL.H(159): error C202: 'PCON': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(64): error C202: 'EA': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(66): error C202: 'EA': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(81): error C202: 'TR0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(82): error C202: 'TR1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(88): error C202: 'TR0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(89): error C202: 'TR1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(109): error C202: 'EX0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(111): error C202: 'IT0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(113): error C202: 'IT0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(119): error C202: 'EX1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(121): error C202: 'IT1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(123): error C202: 'IT1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(143): error C202: 'PX0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(144): error C202: 'PX1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(147): error C202: 'PT0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(148): error C202: 'PT1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(152): error C202: 'PT0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(153): error C202: 'PT1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(158): error C202: 'PX0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(159): error C202: 'PX1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(162): error C202: 'PT0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(163): error C202: 'PT1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(167): error C202: 'PT0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(168): error C202: 'PT1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(214): error C202: 'AUXR': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(215): error C202: 'ET0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(217): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(219): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(220): error C202: 'TL0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(226): error C202: 'AUXR': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(227): error C202: 'ET1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(229): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(231): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(232): error C202: 'TL1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(261): error C202: 'AUXR': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(262): error C202: 'ET0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(264): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(266): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(267): error C202: 'TH0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(268): error C202: 'TL0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(275): error C202: 'AUXR': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(276): error C202: 'ET1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(278): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(280): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(281): error C202: 'TH1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(282): error C202: 'TL1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(303): error C202: 'TH0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(304): error C202: 'TL0': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(308): error C202: 'TH1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(309): error C202: 'TL1': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(368): error C202: 'TMOD': undefined identifier
+..\¿âÄ¿Â¼\ATIME_TIMER.H(375): error C202: 'TMOD': undefined identifier
+ATIME_INTERRUPT.C(33): error C202: 'P3': undefined identifier
+ATIME_INTERRUPT.C(34): error C202: 'P3': undefined identifier
+ATIME_INTERRUPT.C(75): error C202: 'led_1': undefined identifier
+ATIME_INTERRUPT.C(79): error C202: 'led_1': undefined identifier
+ATIME_INTERRUPT.C(87): error C202: 'led_2': undefined identifier
+ATIME_INTERRUPT.C(91): error C202: 'led_2': undefined identifier
+ATIME_MAIN.C(13): error C202: 'led_1': undefined identifier
+ATIME_MAIN.C(14): error C202: 'led_2': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling atime_main.c...
+ATIME_MAIN.C(36): warning C206: 'clear1602_10': missing function-prototype
+ATIME_MAIN.C(36): error C267: 'clear1602_10': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SET_PRIORITY?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_INT?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_RELOAD?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NUMBER_COUNT?ATIME_MAIN
+Program Size: data=60.2 xdata=0 code=4228
+creating hex file from "atime"...
+"atime" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SET_PRIORITY?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_INT?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_RELOAD?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NUMBER_COUNT?ATIME_MAIN
+Program Size: data=60.2 xdata=0 code=4228
+creating hex file from "atime"...
+"atime" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SET_PRIORITY?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_INT?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_RELOAD?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NUMBER_COUNT?ATIME_MAIN
+Program Size: data=60.2 xdata=0 code=4228
+creating hex file from "atime"...
+"atime" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SET_PRIORITY?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_INT?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_RELOAD?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NUMBER_COUNT?ATIME_MAIN
+Program Size: data=60.2 xdata=0 code=4228
+creating hex file from "atime"...
+"atime" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SET_PRIORITY?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_INT?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER_16_RELOAD?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NUMBER_COUNT?ATIME_MAIN
+Program Size: data=60.2 xdata=0 code=4228
+creating hex file from "atime"...
+"atime" - 0 Error(s), 7 Warning(s).

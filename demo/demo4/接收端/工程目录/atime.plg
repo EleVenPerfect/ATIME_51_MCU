@@ -1,0 +1,140 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\STUDY\Github\ATIME_51_MCU\demo\demo4\接收端\工程目录\atime.uvproj
+Project File Date:  06/04/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+Program Size: data=93.0 xdata=0 code=1190
+creating hex file from "atime"...
+"atime" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling atime_main.c...
+ATIME_MAIN.C(48): error C101: '';': invalid character constant
+ATIME_MAIN.C(48): error C141: syntax error near '';'
+atime_main.c(48): error C305: unterminated string/char const
+ATIME_MAIN.C(49): error C141: syntax error near 'b'
+ATIME_MAIN.C(49): error C101: '';': invalid character constant
+ATIME_MAIN.C(49): error C141: syntax error near '';'
+atime_main.c(49): error C305: unterminated string/char const
+ATIME_MAIN.C(50): error C141: syntax error near 'b'
+Target not created
+Build target 'Target 1'
+compiling atime_main.c...
+ATIME_MAIN.C(48): error C101: '';': invalid character constant
+ATIME_MAIN.C(48): error C141: syntax error near '';'
+atime_main.c(48): error C305: unterminated string/char const
+ATIME_MAIN.C(49): error C141: syntax error near 'b'
+ATIME_MAIN.C(49): error C101: '';': invalid character constant
+ATIME_MAIN.C(49): error C141: syntax error near '';'
+atime_main.c(49): error C305: unterminated string/char const
+ATIME_MAIN.C(50): error C141: syntax error near 'b'
+Target not created
+Build target 'Target 1'
+compiling atime_main.c...
+ATIME_MAIN.C(48): error C101: '';': invalid character constant
+ATIME_MAIN.C(48): error C141: syntax error near '';'
+atime_main.c(48): error C305: unterminated string/char const
+ATIME_MAIN.C(49): error C141: syntax error near 'b'
+ATIME_MAIN.C(49): error C101: '';': invalid character constant
+ATIME_MAIN.C(49): error C141: syntax error near '';'
+atime_main.c(49): error C305: unterminated string/char const
+ATIME_MAIN.C(50): error C141: syntax error near 'b'
+Target not created
+Build target 'Target 1'
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+Program Size: data=83.0 xdata=0 code=1196
+creating hex file from "atime"...
+"atime" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+Program Size: data=85.0 xdata=0 code=1264
+creating hex file from "atime"...
+"atime" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+Program Size: data=85.0 xdata=0 code=1264
+creating hex file from "atime"...
+"atime" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+Program Size: data=85.0 xdata=0 code=1277
+creating hex file from "atime"...
+"atime" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+Program Size: data=85.0 xdata=0 code=1277
+creating hex file from "atime"...
+"atime" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+Program Size: data=87.0 xdata=0 code=1281
+creating hex file from "atime"...
+"atime" - 0 Error(s), 4 Warning(s).

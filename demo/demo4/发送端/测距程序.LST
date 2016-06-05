@@ -1,0 +1,176 @@
+C51 COMPILER V9.01   瞋距程序                                                              06/04/2016 15:59:55 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 瞋距程序
+OBJECT MODULE PLACED IN 测距程序.OBJ
+COMPILER INVOKED BY: C:\Program Files (x86)\keil\C51\BIN\C51.EXE 测距程序.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*********************************************************************************************************
+             -**/
+   2          //HC-SR04 超声波测距模块 DEMO 程序
+   3          //晶振：11。0592
+   4          //接线：模块TRIG接 P1.2  ECH0 接P1.1
+   5          //串口波特率9600
+   6          /*********************************************************************************************************
+             -**/          
+   7                  #include   <AT89X51.H>
+   8                  #include   <intrins.h>
+   9              #include   <STDIO.H>
+  10                  #include  "atime_18b20.h"
+  11                  #include  "atime_lcd1602.h"
+  12          
+  13              #define uchar unsigned  char
+  14              #define uint  unsigned   int  
+  15                  #define  RX  P1_1
+  16              #define  TX  P1_2
+  17            
+  18          
+  19                  unsigned int  time=0;
+  20                  unsigned int  timer=0;
+  21                  float         S=0;
+  22              bit           flag =0;
+  23          
+  24              unsigned char a[8];
+  25                  unsigned char b[4];     
+  26          
+  27          /********************************************************/
+  28              void Conut(void)
+  29                  {
+  30   1               time=TH0*256+TL0;
+  31   1               TH0=0;
+  32   1               TL0=0;
+  33   1               S=(time*1.87)/100;     //算出来是CM
+  34   1               if(flag==1)                //超出测量
+  35   1               {
+  36   2                flag=0;
+  37   2                printf("-----\n"); 
+  38   2               }
+  39   1                printf("T=%s 'c\n",a);
+  40   1                waitms(1500);
+  41   1                printf("S=%f cm\n",S); 
+  42   1              }
+  43          /********************************************************/ 
+  44          void delayms(unsigned int ms)
+  45          {
+  46   1              unsigned char i=100,j;
+  47   1              for(;ms;ms--)
+  48   1              {
+  49   2                      while(--i)
+  50   2                      {
+  51   3                              j=10;
+  52   3                              while(--j);
+  53   3                      }
+C51 COMPILER V9.01   瞋距程序                                                              06/04/2016 15:59:55 PAGE 2   
+
+  54   2              }
+  55   1      }
+  56          /********************************************************/
+  57               void zd0() interrupt 1              //T0中断用来计数器溢出,超过测距范围
+  58            {
+  59   1          flag=1;                                                      //中断溢出标志
+  60   1        }
+  61          /********************************************************/
+  62             void  StartModule()                   //T1中断用来扫描数码管和计800MS启动模块
+  63            {
+  64   1                TX=1;                                  //800MS  启动一次模块
+  65   1                _nop_(); 
+  66   1                _nop_(); 
+  67   1                _nop_(); 
+  68   1                _nop_(); 
+  69   1                _nop_(); 
+  70   1                _nop_(); 
+  71   1                _nop_(); 
+  72   1                _nop_(); 
+  73   1                _nop_(); 
+  74   1                _nop_(); 
+  75   1                _nop_(); 
+  76   1                _nop_(); 
+  77   1                _nop_(); 
+  78   1                _nop_(); 
+  79   1                _nop_(); 
+  80   1                _nop_(); 
+  81   1                _nop_();
+  82   1                _nop_(); 
+  83   1                _nop_(); 
+  84   1                _nop_(); 
+  85   1                _nop_();
+  86   1                TX=0;
+  87   1        }
+  88          /********************************************************/
+  89          void main(void)
+  90          {  
+  91   1      
+  92   1              float i;
+  93   1              bit j;
+  94   1              unsigned int ss;
+  95   1              int_lcd1602(rightmove, cursornotdisplay);
+  96   1              
+  97   1              TMOD=0x21;                 //设T0为方式1，GATE=1；
+  98   1              SCON=0x50;
+  99   1              TH1=0xFD;
+ 100   1              TL1=0xFD;
+ 101   1              TH0=0;
+ 102   1              TL0=0; 
+ 103   1              TR0=1;  
+ 104   1              ET0=1;             //允许T0中断
+ 105   1              TR1=1;                     //开启定时器
+ 106   1              TI=1;
+ 107   1      
+ 108   1              EA=1;                      //开启总中断
+ 109   1      
+ 110   1      
+ 111   1              while(1)
+ 112   1              {
+ 113   2               StartModule();
+ 114   2               while(!RX);            //当RX为零时等待
+ 115   2               TR0=1;                     //开启计数
+C51 COMPILER V9.01   瞋距程序                                                              06/04/2016 15:59:55 PAGE 3   
+
+ 116   2               while(RX);                     //当RX为1计数并等待
+ 117   2               TR0=0;                         //关闭计数
+ 118   2           Conut();                   //计算
+ 119   2               delayms(100);          //100MS
+ 120   2               
+ 121   2              
+ 122   2              j =int_18b20();
+ 123   2              if(j == 0)
+ 124   2              {
+ 125   3                      i =read_temper();
+ 126   3                      translate(i,a);
+ 127   3                      print1602(a,1,1);
+ 128   3                      print1602("'C",1,8);
+ 129   3              }
+ 130   2              else
+ 131   2              {
+ 132   3                      print1602("Please Cheak",1,2);
+ 133   3                      waitms(1000);
+ 134   3                      set1602(clear1602);
+ 135   3              }
+ 136   2      
+ 137   2              ss =(unsigned int)S;
+ 138   2      
+ 139   2              b[0] = ss%1000/100+0x30;
+ 140   2              b[1] = ss%100/10+0x30;
+ 141   2              b[2] = ss%10+0x30;
+ 142   2              b[3] = '\0';
+ 143   2              print1602(b,0,4); 
+ 144   2              print1602("cm",0,7);
+ 145   2              }
+ 146   1      
+ 147   1      }              
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1822    ----
+   CONSTANT SIZE    =     44    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     20      42
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1       2
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

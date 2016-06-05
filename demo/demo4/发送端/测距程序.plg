@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\STUDY\Github\ATIME_51_MCU\demo\demo4\∑¢ÀÕ∂À\≤‚æ‡≥Ã–Ú.uvproj
+Project File Date:  06/04/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling ≤‚æ‡≥Ã–Ú.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?≤_æ‡≥Ã–Ú
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?≤_æ‡≥Ã–Ú
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?≤_æ‡≥Ã–Ú
+Program Size: data=72.3 xdata=0 code=4913
+creating hex file from "≤‚æ‡≥Ã–Ú"...
+"≤‚æ‡≥Ã–Ú" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling ≤‚æ‡≥Ã–Ú.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?≤_æ‡≥Ã–Ú
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?≤_æ‡≥Ã–Ú
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?≤_æ‡≥Ã–Ú
+Program Size: data=72.3 xdata=0 code=4913
+creating hex file from "≤‚æ‡≥Ã–Ú"...
+"≤‚æ‡≥Ã–Ú" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling ≤‚æ‡≥Ã–Ú.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?≤_æ‡≥Ã–Ú
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PRINTCHAR1602?≤_æ‡≥Ã–Ú
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?≤_æ‡≥Ã–Ú
+Program Size: data=72.3 xdata=0 code=4913
+creating hex file from "≤‚æ‡≥Ã–Ú"...
+"≤‚æ‡≥Ã–Ú" - 0 Error(s), 3 Warning(s).

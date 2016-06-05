@@ -1,0 +1,73 @@
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/02/2016 22:44:35 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ATIME_MAIN
+OBJECT MODULE PLACED IN atime_main.OBJ
+COMPILER INVOKED BY: C:\Program Files (x86)\keil\C51\BIN\C51.EXE atime_main.c BROWSE INCDIR(..\¿âÄ¿Â¼) DEBUG OBJECTEXTEN
+                    -D
+
+line level    source
+
+   1          #include "STC12C5A60S2.H" 
+   2          #include "atime_lcd1602.h"
+   3          #include "atime_18b20.h"
+   4          #include "atime_serial.h"
+   5          #include "atime_timer.h"
+   6          #include "atime_interrupt.c"
+   7          
+   8          
+   9          void main()
+  10          {
+  11   1              unsigned char display_temp[8];
+  12   1      
+  13   1              led_1 = 0;
+  14   1              led_2 = 0;
+  15   1              serial_int(enable, baud9600, disable);
+  16   1              int_lcd1602( rightmove, cursornotdisplay);
+  17   1              int_interrupt( 0, negative_jump);
+  18   1              int_interrupt( 1, negative_jump);
+  19   1              main_timer(on,0);
+  20   1              timer_8_int(0,200,normal);
+  21   1              main_interrupt(on);
+  22   1      
+  23   1              while(1)
+  24   1              {
+  25   2                      display_temp[0] = temp_set/10%10+0x30;
+  26   2                      display_temp[1] = temp_set%10+0x30;
+  27   2                      display_temp[2] = '\0';
+  28   2                      print1602( display_temp, 0,14);
+  29   2                      printchar1602(' ', 1, 15);
+  30   2      
+  31   2                      ds18b20_exit =int_18b20();
+  32   2                      if( ds18b20_exit ==0 )
+  33   2                      {
+  34   3                              temperature = read_temper();
+  35   3                              translate( temperature, display_temp);
+  36   3                              clear1602_10(0);
+  37   3                              print1602( display_temp, 0, 0);
+  38   3                      }
+  39   2                      else
+  40   2                      {
+  41   3                              print1602( "Check IIC", 0, 1);
+  42   3      
+  43   3                      }
+  44   2      
+  45   2                      waitms(500);
+  46   2              }
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   2686    ----
+   CONSTANT SIZE    =     21    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/02/2016 22:44:35 PAGE 2   
+
+   DATA SIZE        =      7      60
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

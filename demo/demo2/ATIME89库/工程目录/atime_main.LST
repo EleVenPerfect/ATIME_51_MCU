@@ -1,0 +1,230 @@
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/03/2016 12:57:50 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ATIME_MAIN
+OBJECT MODULE PLACED IN atime_main.OBJ
+COMPILER INVOKED BY: C:\Program Files (x86)\keil\C51\BIN\C51.EXE atime_main.c BROWSE INCDIR(..\库目录) DEBUG OBJECTEXTEN
+                    -D
+
+line level    source
+
+   1          #include "STC89C5xRC.H" 
+   2          #include "atime_lcd1602.h"
+   3          #include "atime_18b20.h"
+   4          #include "atime_ds1302.h"
+   5          #include "atime_serial.h"
+   6          
+   7          unsigned char temp_set=30;              //设置初始温度
+   8          float temperature;                              //用来存储温度数据
+   9          unsigned char temp;                             //存储char型温度数据
+  10          unsigned char display_temp[8];  //显示缓存
+  11          sbit led_1 = P0^0;                              //指示灯驱动线
+  12          sbit led_2 = P0^1;                              //指示灯驱动线
+  13          sbit key_1 = P3^2;                              //按键驱动线
+  14          sbit key_2 = P3^3;                              //按键驱动线
+  15          sbit BEEP  = P1^3;                              //蜂鸣器驱动线
+  16          
+  17          void warning(void)
+  18          {
+  19   1              unsigned char i,j;
+  20   1                      
+  21   1              for(i=0;i<230;i++)
+  22   1              {
+  23   2                      BEEP =~BEEP;
+  24   2                      for(j=0;j<250;j++);
+  25   2              }
+  26   1                      
+  27   1      }
+  28          
+  29          void main()
+  30          {
+  31   1              bit  ds18b20_exit;                              //存储ds18b20是否存在
+  32   1              int time_temp;                                  //存储时间数据
+  33   1              unsigned char temp;                             //存储char型温度
+  34   1      
+  35   1              led_1 = 1;
+  36   1              led_2 = 1;
+  37   1              BEEP = 1;
+  38   1              warning();
+  39   1              serial_int(enable, baud9600, disable);
+  40   1              int_lcd1602( rightmove, cursornotdisplay);
+  41   1      
+  42   1              setds1302(second,0);
+  43   1              setds1302(minute,42);
+  44   1              setds1302(hour,19);
+  45   1              setds1302(year,14);
+  46   1              setds1302(month,2);
+  47   1              setds1302(day,7);
+  48   1              setds1302(weekday,5);
+  49   1              ele_mode(1);
+  50   1              EA = 1;
+  51   1      
+  52   1              while(1)
+  53   1              {
+  54   2                      /*显示温度阈值*/
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/03/2016 12:57:50 PAGE 2   
+
+  55   2                      display_temp[0] = temp_set/10%10+0x30;
+  56   2                      display_temp[1] = temp_set%10+0x30;
+  57   2                      display_temp[2] = '\0';
+  58   2                      print1602( display_temp, 0,14);
+  59   2                      printchar1602(' ', 1, 15);
+  60   2      
+  61   2                      /*开始测量温度*/
+  62   2                      ds18b20_exit =int_18b20();
+  63   2                      if( ds18b20_exit ==0 )
+  64   2                      {
+  65   3                              temperature = read_temper(); 
+  66   3                              if(temperature<=80.0)
+  67   3                              {
+  68   4                                      translate( temperature, display_temp);
+  69   4                                      print1602( display_temp, 0, 0);
+  70   4                              }
+  71   3                      }
+  72   2                      else
+  73   2                      {
+  74   3                              print1602( "Not Found", 0, 1);
+  75   3                              led_1 = 0;
+  76   3                              led_2 = 0;
+  77   3                              warning();
+  78   3                              waitms(500);
+  79   3                              clear1602_10(0);
+  80   3                      }
+  81   2                      
+  82   2                      /*设置温度阈值*/
+  83   2                      if(key_1==0)
+  84   2                              temp_set++;
+  85   2                      if(key_2==0)
+  86   2                              temp_set--;
+  87   2                      if(temp_set<10)
+  88   2                              temp_set = 10;
+  89   2                      if(temp_set>70)
+  90   2                              temp_set = 70;
+  91   2      
+  92   2                      /*开始判断温度并指示升温降温*/
+  93   2                      temp = (unsigned char)temperature; 
+  94   2                      if(temp>temp_set)
+  95   2                      {
+  96   3                              
+  97   3                              if(temp-temp_set>1)
+  98   3                              {
+  99   4                                       led_1 = 1;
+ 100   4                                       led_2 = 0;
+ 101   4                                       warning();
+ 102   4                              }
+ 103   3                              else
+ 104   3                              {
+ 105   4                                       led_1 = 1;
+ 106   4                                       led_2 = 1;
+ 107   4                              }
+ 108   3                      }
+ 109   2                      else
+ 110   2                      {
+ 111   3                              if(temp_set-temp>1)
+ 112   3                              {
+ 113   4                                       led_1 = 0;
+ 114   4                                       led_2 = 1;
+ 115   4                                       warning();
+ 116   4                              }
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/03/2016 12:57:50 PAGE 3   
+
+ 117   3                              else
+ 118   3                              {
+ 119   4                                       led_1 = 1;
+ 120   4                                       led_2 = 1;
+ 121   4                              }
+ 122   3                      }
+ 123   2      
+ 124   2                      /*开始显示时间*/
+ 125   2                      time_temp =read1302(hour);
+ 126   2                      if(time_temp<=23)
+ 127   2                      {
+ 128   3                              translate_print(time_temp,display_temp);
+ 129   3                              print1602(display_temp,1,2);
+ 130   3                      }
+ 131   2                                          
+ 132   2                      time_temp =read1302(minute);
+ 133   2                      if(time_temp<=60)
+ 134   2                      {
+ 135   3                              translate_print(time_temp,display_temp);
+ 136   3                              print1602(display_temp,1,5);
+ 137   3                      }
+ 138   2                              
+ 139   2                      time_temp =read1302(second);
+ 140   2                      time_temp =read1302(second);            //读取两次为了保证能够读取数据成功
+ 141   2                      if(time_temp<=60)
+ 142   2                      {
+ 143   3                              translate_print(time_temp,display_temp);
+ 144   3                              print1602(display_temp,1,8);
+ 145   3      
+ 146   3      
+ 147   3                              /*设置冒号闪烁*/
+ 148   3                              if(time_temp%2!=1)
+ 149   3                              {
+ 150   4                              print1602(" ",1,4);     
+ 151   4                                      print1602(" ",1,7);
+ 152   4                              }
+ 153   3                              else
+ 154   3                              {
+ 155   4                                      print1602(":",1,4);
+ 156   4                                      print1602(":",1,7);     
+ 157   4                              }
+ 158   3                      }
+ 159   2      
+ 160   2      
+ 161   2              }
+ 162   1      }
+ 163          
+ 164          
+ 165          
+ 166          void interrupt_serial1(void) interrupt 4
+ 167          {
+ 168   1              unsigned char k;
+ 169   1              k =receive_char();
+ 170   1              printchar1602(k , 1, 15);
+ 171   1              if(k=='A')
+ 172   1              {
+ 173   2                      temp_set++;
+ 174   2                      if(temp_set>70)
+ 175   2                              temp_set = 70;
+ 176   2              }
+ 177   1              if(k=='B')
+ 178   1              {
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/03/2016 12:57:50 PAGE 4   
+
+ 179   2                      temp_set--;     
+ 180   2                      if(temp_set<10)
+ 181   2                              temp_set = 10;          
+ 182   2              }
+ 183   1              if(k=='T')
+ 184   1              {
+ 185   2                      temp = (unsigned char)temperature; 
+ 186   2                      send_char(temp%100/10+0x30);    
+ 187   2                      send_char(temp%10+0x30);
+ 188   2                      temp = (unsigned char)(temperature*100); 
+ 189   2                      send_char('.');
+ 190   2                      send_char(temp%100/10+0x30);    
+ 191   2                      send_char(temp%10+0x30);
+ 192   2                      send_char(' '); 
+ 193   2              }
+ 194   1      
+ 195   1              send_char(k);
+ 196   1              send_char(' ');
+ 197   1              send_char('O');
+ 198   1              send_char('K');
+ 199   1              send_char('\n');
+ 200   1      }       
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   2922    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14      55
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       6
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

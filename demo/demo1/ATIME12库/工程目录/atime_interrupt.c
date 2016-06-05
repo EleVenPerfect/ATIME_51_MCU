@@ -31,10 +31,12 @@
 unsigned char temp_set=30;	//设置初始温度
 float temperature1;
 float temperature2;
+unsigned char temp_average;
 sbit jdq_1 = P3^6;
 sbit jdq_2 = P3^7; 
 int aaa = 0;	//分频定时器用
-
+bit ds18b20_1_exist;
+bit ds18b20_2_exist;
 
 /************************************
 函数功能：外部中断0的中断服务
@@ -57,42 +59,57 @@ void interrupt_int0(void) interrupt 0
 注意：空
 ***************************************/
 void interrupt_timer0(void) interrupt 1
-{
-	unsigned char temp_average;
+{		
 	unsigned char distance;
 	
-	aaa++;
-	if(aaa>60000)
+	if(aaa>10)
 	{
 		aaa=0;
 
-		temp_average = (unsigned char)((temperature1+temperature2)/2);
+		//求平均值
+		if( ds18b20_1_exist==0&&ds18b20_2_exist==0 )	//若两个都存在
+			temp_average = (unsigned char)((temperature1+temperature2)/2); //求平均值后强制转换为unsigned char
+		else											
+		{
+			if(ds18b20_1_exist==0)
+				temp_average = (unsigned char)temperature1;
+			else
+			if(ds18b20_2_exist==0)
+				temp_average = (unsigned char)temperature2;	
+			else
+				goto end_interrupt;					//若都不存在就直接跳出
+		}
+
+
+
 		if(temp_average>temp_set)
 		{
 			distance = temp_average - temp_set;	
-			if( distance>3 )     //检测实际温度平均值如果大于3则启动降温程序
+			if( distance>1 )     //检测实际温度平均值如果大于1则启动降温程序
 			{
-				jdq_1 = 1;		 //低电平触发散热
+				jdq_1 = 0;		 //低电平触发散热
 			}
 			else
 			{
-				jdq_1 = 0;
+				jdq_1 = 1;
 			}
 		}
 		else
 		{
 			distance = temp_set - temp_average;
-			if( distance>3 )	 //检测实际温度平均值如果大于3则启动升温程序
+			if( distance>1 )	 //检测实际温度平均值如果大于1则启动升温程序
 			{
-				jdq_2 = 1;        //高电平触发发热
+				jdq_2 = 0;       //高电平触发发热
 			}
 			else
 			{
-				jdq_2 = 0;	
+				jdq_2 = 1;	
 			}
 		}		
 	
-	}		
+	}
+	end_interrupt:
+	aaa++;	
 }
 
 
@@ -133,7 +150,7 @@ void interrupt_timer1(void) interrupt 3
 void interrupt_serial1(void) interrupt 4
 {
 	unsigned char k;
-	k =receive_char();
+	k =receive_char();	 //读取接收到的数据
 	printchar1602(k , 1, 15);
 	if(k=='A')
 	{
@@ -146,6 +163,12 @@ void interrupt_serial1(void) interrupt 4
 		temp_set--;	
 		if(temp_set<10)
 			temp_set = 10;		
+	}
+	if(k=='T')
+	{
+		send_char(temp_average%100/10+0x30);	
+		send_char(temp_average%10+0x30);
+		send_char(' ');	
 	}
 
 	send_char(k);

@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   ATIME_MAIN                                                            05/21/2016 11:10:26 PAGE 1   
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/05/2016 14:54:56 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE ATIME_MAIN
@@ -18,71 +18,77 @@ line level    source
    8          
    9          void main()
   10          {
-  11   1              unsigned char display_temp[8];
-  12   1              bit ds18b20_exit;
-  13   1      
-  14   1              jdq_1 = 0;
-  15   1              jdq_2 = 0;
-  16   1              serial_int(enable, baud9600, disable);
-  17   1              int_lcd1602( rightmove, cursornotdisplay);
-  18   1              int_interrupt( 0, negative_jump);
-  19   1              int_interrupt( 1, negative_jump);
-  20   1              main_timer(on,0);
-  21   1              timer_8_int(0,240,normal);
-  22   1              main_interrupt(on);
-  23   1      
-  24   1              while(1)
-  25   1              {
-  26   2                      display_temp[0] = temp_set/10%10+0x30;
+  11   1              unsigned char display_temp[8];          //显示缓存
+  12   1      
+  13   1              jdq_1 = 1;
+  14   1              jdq_2 = 1;                                                      //为1时开启
+  15   1              serial_int(enable, baud9600, disable); //串口初始化
+  16   1              int_lcd1602( rightmove, cursornotdisplay); //1602初始化
+  17   1              int_interrupt( 0, negative_jump);                  //外部中断0，下降沿触发
+  18   1              int_interrupt( 1, negative_jump);
+  19   1              main_timer(on,0);                                               //开启定时器
+  20   1              timer_8_int(0,240,normal);                              //定时器设置240个脉冲后溢出，并触发中断
+  21   1              main_interrupt(on);                                             //开启总中断
+  22   1      
+  23   1              while(1)
+  24   1              {
+  25   2                      /*显示控制阈值*/
+  26   2                      display_temp[0] = temp_set%100/10+0x30;  //任何数字加0x30转换为可以显示的ASCII码
   27   2                      display_temp[1] = temp_set%10+0x30;
   28   2                      display_temp[2] = '\0';
   29   2                      print1602( display_temp, 0,14);
   30   2                      printchar1602(' ', 1, 15);
   31   2      
-  32   2                      ds18b20_exit =int_18b20_1();
-  33   2                      if( ds18b20_exit ==0 )
-  34   2                      {
-  35   3                              temperature1 = read_temper_1();
-  36   3                              translate( temperature1, display_temp);
-  37   3                              clear1602_10(0);
-  38   3                              print1602( display_temp, 0, 0);
-  39   3                      }
-  40   2                      else
-  41   2                      {
-  42   3                              print1602( "Check 1", 0, 1);
-  43   3      
-  44   3                      }
-  45   2      
-  46   2                      ds18b20_exit =int_18b20_2();
-  47   2                      if( ds18b20_exit ==0 )
-  48   2                      {
-  49   3                              temperature2 = read_temper_2();
-  50   3                              translate( temperature2, display_temp);
-  51   3                              clear1602_10(1);
-  52   3                              print1602( display_temp, 1, 0);
-  53   3                      }
-  54   2                      else
-C51 COMPILER V9.01   ATIME_MAIN                                                            05/21/2016 11:10:26 PAGE 2   
+  32   2      
+  33   2                      /*读取温度传感器1并显示，当读取温度为85时为错误数据，不显示*/
+  34   2                      ds18b20_1_exist =int_18b20_1(); //判断传感器是否存在
+  35   2                      if( ds18b20_1_exist ==0 )                  //为0时存在
+  36   2                      {
+  37   3                              temperature1 = read_temper_1();   //读取温度数据
+  38   3                              if(temperature1<85.0)                     //去除开机第一次显示的错误数据
+  39   3                              {
+  40   4                                      translate( temperature1, display_temp); //把float型数据转换为可以显示的数据并放到显示缓存
+  41   4                                      print1602( display_temp, 0, 0);                 //显示
+  42   4                              }
+  43   3                      }
+  44   2                      else                                                                                    //若不存在
+  45   2                      {
+  46   3                              print1602( "Check 1", 0, 1);
+  47   3                              waitms(500);                                                             //清除显示的数据
+  48   3                              clear1602_10(0);
+  49   3                      }
+  50   2                      /*读取温度传感器2，当读取温度为85时为错误数据，不显示*/
+  51   2                      ds18b20_2_exist =int_18b20_2();
+  52   2                      if( ds18b20_2_exist ==0 )
+  53   2                      {
+  54   3                              temperature2 = read_temper_2();
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/05/2016 14:54:56 PAGE 2   
 
-  55   2                      {
-  56   3                              print1602( "Check 2", 1, 1);
-  57   3      
-  58   3                      }
-  59   2      
-  60   2      
-  61   2      
-  62   2              }
-  63   1      }
+  55   3                              if(temperature2<85.0)
+  56   3                              {
+  57   4                                      translate( temperature2, display_temp);
+  58   4                                      print1602( display_temp, 1, 0);
+  59   4                              }
+  60   3                      }
+  61   2                      else
+  62   2                      {
+  63   3                              print1602( "Check 2", 1, 1);
+  64   3                              waitms(500);
+  65   3                              clear1602_10(1);
+  66   3                      }
+  67   2                      waitms(300);
+  68   2              }
+  69   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   3219    ----
+   CODE SIZE        =   3370    ----
    CONSTANT SIZE    =     27    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     11      68
+   DATA SIZE        =     12      68
    IDATA SIZE       =   ----    ----
-   BIT SIZE         =   ----       5
+   BIT SIZE         =      2       4
 END OF MODULE INFORMATION.
 
 
