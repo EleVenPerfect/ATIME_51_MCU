@@ -40,8 +40,8 @@ void main()
 	int_lcd1602( rightmove, cursornotdisplay);
 
 	setds1302(second,0);
-	setds1302(minute,42);
-	setds1302(hour,19);
+	setds1302(minute,0);
+	setds1302(hour,0);
 	setds1302(year,14);
 	setds1302(month,2);
 	setds1302(day,7);

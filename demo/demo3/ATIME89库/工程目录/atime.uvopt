@@ -167,15 +167,41 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>23</ColumnNumber>
+      <ColumnNumber>46</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>27</TopLine>
-      <CurrentLine>45</CurrentLine>
+      <TopLine>13</TopLine>
+      <CurrentLine>32</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\atime_main.c</PathWithFileName>
       <FilenameWithoutPath>atime_main.c</FilenameWithoutPath>
     </File>
   </Group>
+
+  <AlienFiles>
+    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo3\ATIME89库\库目录\ATIME_LCD1602.H</PathWithFilename>
+    <TopLine>49</TopLine>
+    <CurrentLine>61</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
 
   <AlienFiles>
     <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo3\ATIME89库\工程目录\ATIME_INTERRUPT.C</PathWithFilename>
@@ -204,9 +230,9 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo3\ATIME89库\库目录\ATIME_LCD1602.H</PathWithFilename>
-    <TopLine>49</TopLine>
-    <CurrentLine>61</CurrentLine>
+    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo3\ATIME89库\库目录\ATIME_TIMER.H</PathWithFilename>
+    <TopLine>43</TopLine>
+    <CurrentLine>43</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1570,13 +1596,13 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>2</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\atime_main.c</Name>
-          <ColumnNumber>23</ColumnNumber>
-          <TopLine>27</TopLine>
-          <CurrentLine>45</CurrentLine>
+          <ColumnNumber>46</ColumnNumber>
+          <TopLine>13</TopLine>
+          <CurrentLine>32</CurrentLine>
         </Doc>
         <Doc>
           <Name>ATIME_INTERRUPT.C</Name>
@@ -1589,6 +1615,12 @@
           <ColumnNumber>11</ColumnNumber>
           <TopLine>49</TopLine>
           <CurrentLine>61</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>..\库目录\ATIME_TIMER.H</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>43</TopLine>
+          <CurrentLine>43</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

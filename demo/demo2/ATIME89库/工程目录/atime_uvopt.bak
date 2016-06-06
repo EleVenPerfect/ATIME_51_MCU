@@ -169,8 +169,8 @@
       <Focus>0</Focus>
       <ColumnNumber>88</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>173</TopLine>
-      <CurrentLine>183</CurrentLine>
+      <TopLine>65</TopLine>
+      <CurrentLine>65</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\atime_main.c</PathWithFileName>
       <FilenameWithoutPath>atime_main.c</FilenameWithoutPath>
@@ -178,35 +178,9 @@
   </Group>
 
   <AlienFiles>
-    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_DS1302.H</PathWithFilename>
-    <TopLine>316</TopLine>
-    <CurrentLine>320</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_LCD1602.H</PathWithFilename>
-    <TopLine>223</TopLine>
-    <CurrentLine>225</CurrentLine>
+    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_18B20.H</PathWithFilename>
+    <TopLine>155</TopLine>
+    <CurrentLine>160</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -256,9 +230,35 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_18B20.H</PathWithFilename>
-    <TopLine>155</TopLine>
-    <CurrentLine>160</CurrentLine>
+    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_LCD1602.H</PathWithFilename>
+    <TopLine>223</TopLine>
+    <CurrentLine>225</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_DS1302.H</PathWithFilename>
+    <TopLine>316</TopLine>
+    <CurrentLine>320</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1627,8 +1627,8 @@
         <Doc>
           <Name>.\atime_main.c</Name>
           <ColumnNumber>88</ColumnNumber>
-          <TopLine>173</TopLine>
-          <CurrentLine>183</CurrentLine>
+          <TopLine>65</TopLine>
+          <CurrentLine>65</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\库目录\ATIME_DS1302.H</Name>

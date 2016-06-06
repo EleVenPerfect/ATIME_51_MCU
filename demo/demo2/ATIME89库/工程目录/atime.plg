@@ -7,3 +7,17 @@ D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89¿â\¹¤³ÌÄ¿Â¼\atime.uvproj
 Project File Date:  06/02/2016
 
 <h2>Output:</h2>
+Build target 'Target 1'
+compiling atime_main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETPIC1602?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BCD_TRANS_CHAR?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?JUDGE_PAUSE?ATIME_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_SERIAL?ATIME_MAIN
+Program Size: data=53.5 xdata=0 code=4227
+creating hex file from "atime"...
+"atime" - 0 Error(s), 4 Warning(s).

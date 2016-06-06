@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   ATIME_MAIN                                                            06/03/2016 12:57:50 PAGE 1   
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/05/2016 23:02:45 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE ATIME_MAIN
@@ -50,8 +50,8 @@ line level    source
   40   1              int_lcd1602( rightmove, cursornotdisplay);
   41   1      
   42   1              setds1302(second,0);
-  43   1              setds1302(minute,42);
-  44   1              setds1302(hour,19);
+  43   1              setds1302(minute,0);
+  44   1              setds1302(hour,0);
   45   1              setds1302(year,14);
   46   1              setds1302(month,2);
   47   1              setds1302(day,7);
@@ -62,7 +62,7 @@ line level    source
   52   1              while(1)
   53   1              {
   54   2                      /*œ‘ æŒ¬∂»„–÷µ*/
-C51 COMPILER V9.01   ATIME_MAIN                                                            06/03/2016 12:57:50 PAGE 2   
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/05/2016 23:02:45 PAGE 2   
 
   55   2                      display_temp[0] = temp_set/10%10+0x30;
   56   2                      display_temp[1] = temp_set%10+0x30;
@@ -126,7 +126,7 @@ line level    source
  114   4                                       led_2 = 1;
  115   4                                       warning();
  116   4                              }
-C51 COMPILER V9.01   ATIME_MAIN                                                            06/03/2016 12:57:50 PAGE 3   
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/05/2016 23:02:45 PAGE 3   
 
  117   3                              else
  118   3                              {
@@ -190,7 +190,7 @@ line level    source
  176   2              }
  177   1              if(k=='B')
  178   1              {
-C51 COMPILER V9.01   ATIME_MAIN                                                            06/03/2016 12:57:50 PAGE 4   
+C51 COMPILER V9.01   ATIME_MAIN                                                            06/05/2016 23:02:45 PAGE 4   
 
  179   2                      temp_set--;     
  180   2                      if(temp_set<10)
@@ -217,7 +217,7 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   2922    ----
+   CODE SIZE        =   2920    ----
    CONSTANT SIZE    =     25    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
