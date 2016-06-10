@@ -167,10 +167,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>18</ColumnNumber>
+      <ColumnNumber>12</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>32</TopLine>
-      <CurrentLine>45</CurrentLine>
+      <TopLine>22</TopLine>
+      <CurrentLine>36</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\atime_main.c</PathWithFileName>
       <FilenameWithoutPath>atime_main.c</FilenameWithoutPath>
@@ -179,8 +179,8 @@
 
   <AlienFiles>
     <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_18B20.H</PathWithFilename>
-    <TopLine>155</TopLine>
-    <CurrentLine>160</CurrentLine>
+    <TopLine>41</TopLine>
+    <CurrentLine>58</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -205,8 +205,8 @@
 
   <AlienFiles>
     <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_SERIAL.H</PathWithFilename>
-    <TopLine>82</TopLine>
-    <CurrentLine>85</CurrentLine>
+    <TopLine>46</TopLine>
+    <CurrentLine>46</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -231,8 +231,8 @@
 
   <AlienFiles>
     <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_LCD1602.H</PathWithFilename>
-    <TopLine>223</TopLine>
-    <CurrentLine>225</CurrentLine>
+    <TopLine>43</TopLine>
+    <CurrentLine>60</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -257,8 +257,8 @@
 
   <AlienFiles>
     <PathWithFilename>D:\STUDY\Github\ATIME_51_MCU\demo\demo2\ATIME89库\库目录\ATIME_DS1302.H</PathWithFilename>
-    <TopLine>316</TopLine>
-    <CurrentLine>320</CurrentLine>
+    <TopLine>91</TopLine>
+    <CurrentLine>98</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1626,33 +1626,33 @@
       <Documents>
         <Doc>
           <Name>.\atime_main.c</Name>
-          <ColumnNumber>18</ColumnNumber>
-          <TopLine>32</TopLine>
-          <CurrentLine>45</CurrentLine>
+          <ColumnNumber>12</ColumnNumber>
+          <TopLine>22</TopLine>
+          <CurrentLine>36</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\库目录\ATIME_DS1302.H</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>316</TopLine>
-          <CurrentLine>320</CurrentLine>
+          <ColumnNumber>35</ColumnNumber>
+          <TopLine>91</TopLine>
+          <CurrentLine>98</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\库目录\ATIME_LCD1602.H</Name>
           <ColumnNumber>16</ColumnNumber>
-          <TopLine>223</TopLine>
-          <CurrentLine>225</CurrentLine>
+          <TopLine>43</TopLine>
+          <CurrentLine>60</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\库目录\ATIME_SERIAL.H</Name>
           <ColumnNumber>1</ColumnNumber>
-          <TopLine>82</TopLine>
-          <CurrentLine>85</CurrentLine>
+          <TopLine>46</TopLine>
+          <CurrentLine>46</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\库目录\ATIME_18B20.H</Name>
-          <ColumnNumber>14</ColumnNumber>
-          <TopLine>155</TopLine>
-          <CurrentLine>160</CurrentLine>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>41</TopLine>
+          <CurrentLine>58</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>
