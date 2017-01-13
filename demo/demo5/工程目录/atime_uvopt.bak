@@ -174,10 +174,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>21</ColumnNumber>
+      <ColumnNumber>1</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>4</CurrentLine>
+      <CurrentLine>12</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\atime_main.c</PathWithFileName>
       <FilenameWithoutPath>atime_main.c</FilenameWithoutPath>
@@ -1603,13 +1603,19 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>3</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\atime_main.c</Name>
-          <ColumnNumber>21</ColumnNumber>
+          <ColumnNumber>1</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>4</CurrentLine>
+          <CurrentLine>12</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>ATIME_APP.C</Name>
+          <ColumnNumber>4</ColumnNumber>
+          <TopLine>86</TopLine>
+          <CurrentLine>101</CurrentLine>
         </Doc>
         <Doc>
           <Name>..\库目录\ATIME_IIC.H</Name>
@@ -1622,12 +1628,6 @@
           <ColumnNumber>0</ColumnNumber>
           <TopLine>147</TopLine>
           <CurrentLine>165</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>ATIME_APP.C</Name>
-          <ColumnNumber>4</ColumnNumber>
-          <TopLine>86</TopLine>
-          <CurrentLine>101</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

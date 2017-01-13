@@ -1,7 +1,7 @@
 /************************************
 库功能：硬件AD转换器库
 库要求：程序已经载入：
-		#include “STC12C5A60S2”
+		#include “STC15F2K60S2”
 应用函数：
 		void ad_start(void)
 		void ad_init(unsigned char x)
@@ -14,7 +14,7 @@
 最后修改时间：2014-04-27
 作者： ATIME	版权所有
 实例程序：
-			#include "STC12C5A60S2.H" 	
+			#include "STC15F2K60S2.H" 	
 			#include "atime_ad.h"
 			#include "atime_lcd1602.h"
 			
@@ -47,6 +47,7 @@
 	*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS	：库里的函数有没有调用过的，一般可以忽略此警告
 	123.C(7): error C202: 'riht1602': undefined identifier	 ：参数名称拼写错误，更正拼写错误即可
 	123.C(14): error C214: illegal pointer conversion    ：要求参数是字符串，而你给的是字符
+注意：本库函数仅在STC12C5A60S2上面测试，不能保证在其他平台上的可靠性。
 ***************************************/
 
 #ifndef _ATIME_AD_H_ 
@@ -57,25 +58,6 @@
 /************************************
 库全局变量组
 ***************************************/
-
-
-/************************************
-函数功能：延时大约n 毫秒ms
-传递参数：n 时间
-返回值：空	
-注意：此函数不能精确定时
-***************************************/
-void ad_waitms(unsigned int n)
-{
-	int i;
-	while(n--)
-	{
-		for(i=0; i<580; i++)		  //89系列选择75,12系列选择750
-		{
-			;
-		}	
-	}
-}
 
 
 /****************************************************
@@ -125,7 +107,7 @@ unsigned int ad_get(void)
 传入参数：i:1打开；0：关闭
 返回值：空
 ****************************************************/
-void ad_inter_main(	unsigned char i)
+void ad_inter_main( unsigned char i)
 {
 	if(i == 1)
 	{

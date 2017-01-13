@@ -90,9 +90,9 @@
 库全局变量组
 ***************************************/
 
-sbit SCLK_DS1302 =P1^0;	 //位定义ds1302的SCLK接口位置
-sbit DATA_DS1302 =P1^1;	 //位定义ds1302的DATA接口位置
-sbit RES_DS1302  =P1^2;	 //位定义ds1302的RES 接口位置
+sbit SCLK_DS1302 =P0^0;	 //位定义ds1302的SCLK接口位置
+sbit DATA_DS1302 =P0^1;	 //位定义ds1302的DATA接口位置
+sbit RES_DS1302  =P0^2;	 //位定义ds1302的RES 接口位置
 enum ds1302_write_switch {on, off};			  //枚举写允许开关状态
 enum ds1302_address{second, minute, hour, day, weekday, month, year};	   //枚举寄存器
 

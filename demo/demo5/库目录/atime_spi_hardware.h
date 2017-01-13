@@ -1,7 +1,7 @@
 /************************************
 库功能：硬件SPI接口库 BETA
 库要求：程序已经载入：
-		#include "STC12C5A60S2.H"
+		#include "STC15F2K60S2.H"
 应用函数：
 		 unsigned char spi_hardware_init( enum spi_enable a, enum spi_first b, unsigned char t, enum spi_first d)
 		 void spi_send_char( unsigned char temp)
@@ -14,7 +14,7 @@
 最后修改时间：2014-04-26
 作者： ATIME	版权所有
 实例程序：
-			#include "STC12C5A60S2.H" 	
+			#include "STC15F2K60S2.H" 	
 			#include "atime_lcd1602.h"
 			#include "atime_spi_hardware.h"
 			

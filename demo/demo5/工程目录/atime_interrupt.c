@@ -38,7 +38,9 @@
 ***************************************/
 void interrupt_int0(void) interrupt 0
 {
-
+			unsigned char k;
+			k =receive_char();
+			send_char(k);
 }
 
 
@@ -50,7 +52,9 @@ void interrupt_int0(void) interrupt 0
 ***************************************/
 void interrupt_timer0(void) interrupt 1
 {
-	P1 =~P1;				
+			unsigned char k;
+			k =receive_char();
+			send_char(k);				
 }
 
 
@@ -63,7 +67,9 @@ void interrupt_timer0(void) interrupt 1
 ***************************************/
 void interrupt_int1(void) interrupt 2
 {
-	
+			unsigned char k;
+			k =receive_char();
+			send_char(k);	
 }
 
 
@@ -76,7 +82,9 @@ void interrupt_int1(void) interrupt 2
 ***************************************/
 void interrupt_timer1(void) interrupt 3
 {
-
+			unsigned char k;
+			k =receive_char();
+			send_char(k);
 }
 
 
@@ -88,7 +96,9 @@ void interrupt_timer1(void) interrupt 3
 ***************************************/
 void interrupt_serial1(void) interrupt 4
 {
-
+			unsigned char k;
+			k =receive_char();
+			send_char(k);
 }	
 
 
@@ -102,7 +112,9 @@ void interrupt_serial1(void) interrupt 4
 ***************************************/
 void interrupt_serial2(void) interrupt 8
 {
-
+			unsigned char k;
+			k =receive_char();
+			send_char(k);
 }		
 
 

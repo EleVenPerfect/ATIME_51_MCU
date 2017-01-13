@@ -44,8 +44,8 @@ void byj_us(unsigned int n)
 	unsigned char i;
 	while(n--)
 		for(i=0; i<2; i++);	
-}
-								*/
+}								   */
+								  
 
 /************************************
 函数功能：延时大约n 毫秒ms
@@ -58,7 +58,7 @@ void wait_byj_ms(unsigned int n)
 	int i;
 	while(n--)
 	{
-		for(i=0; i<75; i++)
+		for(i=0; i<580; i++)		 //89选75,12选580
 		{
 			;
 		}	
@@ -76,9 +76,13 @@ void motor_byj_zz(unsigned int t)
 	for(i=8; i>0; i--)
 	{
 		BJA =(bit)((ZZ[i]&0x08)>>3);
+
 		BJB =(bit)((ZZ[i]&0x04)>>2);
+	
 		BJC =(bit)((ZZ[i]&0x02)>>1);
-		BJD =(bit)(ZZ[i]&0x01);	
+	
+		BJD =(bit)(ZZ[i]&0x01);
+		
 		wait_byj_ms(t);
 	}
 }
@@ -94,9 +98,13 @@ void motor_byj_fz(unsigned int t)
 	for(i=0; i<8; i++)
 	{
 		BJA =(bit)((ZZ[i]&0x08)>>3);
+
 		BJB =(bit)((ZZ[i]&0x04)>>2);
+
 		BJC =(bit)((ZZ[i]&0x02)>>1);
-		BJD =(bit)(ZZ[i]&0x01);		
+
+		BJD =(bit)(ZZ[i]&0x01);	
+		
 		wait_byj_ms(t);
 	}
 }

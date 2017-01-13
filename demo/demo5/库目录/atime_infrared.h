@@ -118,7 +118,7 @@ void start_code(void) // interrupt 0
 				{
 					temp =temp>>1;
 					while(HWJS ==0);
-					infrared_us(26);	 //调节数字在27左右以调整译码准去度
+					infrared_us(27);	 //调节数字在27左右以调整译码准去度
 					if(HWJS ==1)
 						temp =temp|0x80;
 					else

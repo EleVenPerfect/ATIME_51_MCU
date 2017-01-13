@@ -1,7 +1,7 @@
 /************************************
 库功能：12单片机EEPROM库
 库要求：主函数中已定义：
-		#include "STC12C5A60S2.H" 
+		#include "STC15F2K60S2.H" 
 应用函数：	
 修改历史：
 		   	 ‘修改人’   ‘修改内容’  	‘修改时间’
@@ -9,7 +9,7 @@
 最后修改时间：2014-04-29
 作者： ATIME	版权所有
 实例程序：
-		#include "STC12C5A60S2.H" 
+		#include "STC15F2K60S2.H" 
 		#include "atime_eeprom.h"
 		#include "atime_lcd1602.h"
 		

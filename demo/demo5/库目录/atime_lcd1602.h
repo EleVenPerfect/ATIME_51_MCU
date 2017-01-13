@@ -6,6 +6,7 @@
 		int_lcd1602(enum lcdint_ac a,enum lcdint_cursor b)
 		print1602(unsigned char db[], unsigned int y, unsigned int x)
 		printchar1602(unsigned char db, unsigned int y, unsigned int x)
+		printint1602(unsigned int i, unsigned char y, unsigned char x)
 		set1602(enum set a )
 		bcd_trans_char(unsigned char a[], unsigned char b[],unsigned char j)
 修改历史：
@@ -21,7 +22,9 @@
 			   ATIME	 调试了函数						 2014-04-16
 			   			 print1602(unsigned char db[], unsigned int y, unsigned int x)
 						 printchar1602(unsigned char db, unsigned int y, unsigned int x)
-						 确认了函数功能的实现	
+						 确认了函数功能的实现
+			   ATIME	 添加函数						 2014-10-07
+						 printint1602(unsigned int i, unsigned char y, unsigned char x)
 最后完成时间：2014-01-29
 作者： ATIME	版权所有
 实例程序：
@@ -54,11 +57,11 @@
 /************************************
 库全局变量组
 ***************************************/
-#define DATA_LCD1602 P0  //定义lcd1602的8位数据口
+#define DATA_LCD1602 P1  //定义lcd1602的8位数据口
 sbit RS =P2^0;    //寄存器选择位，将RS位定义为P2.0引脚 ;1:数据；0：命令
 sbit RW =P2^1;    //读写选择位，将RW位定义为P2.1引脚	  ;1:读取；0：写入
 sbit EN =P2^2;    //使能信号位，将E位定义为P2.2引脚
-sbit BF =P0^7;    //忙碌标志位，，将BF位定义为P0.7引脚 ;1:禁止；0：允许
+sbit BF =P1^7;    //忙碌标志位，，将BF位定义为P0.7引脚 ;1:禁止；0：允许
 
 
 enum set{clear1602, left1602, right1602 }; 			                              //枚举:设定参数 ，见186行注解
@@ -76,7 +79,7 @@ void waitms(unsigned int n)
 	int i;
 	while(n--)
 	{
-		for(i=0; i<580; i++)		  //89系列选择75,12系列选择750
+		for(i=0; i<580; i++)		  //89系列选择75,12系列选择580,15系列选择580
 		{
 			;
 		}	
@@ -305,12 +308,36 @@ void bcd_trans_char(unsigned char a[], unsigned char b[],unsigned char j)
 	unsigned int i;
 	for(i=0; i<j; i++)
 	{
-		b[3*i] =a[i]/100+0x30;
+		b[3*i]   =a[i]/100+0x30;
 		b[3*i+1] =(a[i]%100)/10+0x30;
 		b[3*i+2] =(a[i]%10)+0x30;
 	}
 }
 
+
+
+/************************************
+函数功能：显示int数据
+传递参数：
+		i:待显示数字
+		y：纵坐标
+		x：横坐标
+返回值：空
+***************************************/
+void printint1602(unsigned int i, unsigned char y, unsigned char x)
+{
+	unsigned char k;
+	k =i/10000;
+	printchar1602(k+0x30, y, x);	
+	k =i%10000/1000;
+	printchar1602(k+0x30, y, ++x);
+	k =i%1000/100;
+	printchar1602(k+0x30, y, ++x);	
+	k =i%100/10;
+	printchar1602(k+0x30, y, ++x);	
+	k =i%10;
+	printchar1602(k+0x30, y, ++x);
+}
 
 
 #endif	

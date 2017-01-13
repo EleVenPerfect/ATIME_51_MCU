@@ -1,7 +1,7 @@
 /************************************
 库功能：并口1.8寸液晶函数库
 库要求：主函数中已定义：
-		#include "STC12C5A60S2.H"
+		#include "STC15F2K60S2.H"
 		#include "ascii_char.h"
 		要求char.h在本库函数前面，提供ASCII码服务
 应用函数：
@@ -56,7 +56,7 @@
 		}	
 	}
 例程二：
-	#include "STC12C5A60S2.H" 
+	#include "STC15F2K60S2.H" 
 	#include "ascii_char.h"
 	#include "b.c"
 	#include "atime_tft_1_8.h"
@@ -75,7 +75,7 @@
 	}
 
 例程三：
-		#include "STC12C5A60S2.H" 
+		#include "STC15F2K60S2.H" 
 		#include "ascii_char.h"
 		#include "b.c"
 		#include "atime_tft_1_8.h"
@@ -148,7 +148,7 @@
 库全局变量组
 ***************************************/
 
-#define  DATA   P0	
+#define  DATA   P1	
 sbit LCD_WR   = P2^4;
 sbit LCD_RS   = P2^5;
 sbit LCD_CS   = P2^6;
@@ -583,7 +583,6 @@ void lcd_printstring(unsigned char *p, unsigned char x, unsigned char y, unsigne
     	 p++ ;
     }
 }						
-
 
 
 

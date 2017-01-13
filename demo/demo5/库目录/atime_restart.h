@@ -1,7 +1,7 @@
 /************************************
 库功能：冷启动复位
 库要求：主函数中已定义：
-		#include “STC12C5A60S2”
+		#include “STC15F2K60S2”
 应用函数：
 		 void rstart(void)
 修改历史：
@@ -10,7 +10,7 @@
 最后完成时间:2014-04-27
 作者： ATIME	版权所有
 实例程序：
-	#include "STC12C5A60S2.H"
+	#include "STC15F2K60S2.H"
 	#include "atime_restart.h"
 
 	void waitms(unsigned int n)
