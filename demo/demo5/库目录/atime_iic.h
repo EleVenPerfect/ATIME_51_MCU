@@ -84,8 +84,8 @@
 库全局变量组
 ***************************************/
 
-sbit SCL =P3^4;            //串行时钟总线SCL位
-sbit SDA =P3^5; 		   //串行数据总线SDA位
+sbit SCL =P1^7;            //串行时钟总线SCL位
+sbit SDA =P1^6; 		   //串行数据总线SDA位
 
 /************************************
 函数功能：延时大约n 毫秒us
@@ -96,7 +96,7 @@ sbit SDA =P3^5; 		   //串行数据总线SDA位
 void wait_iicbus()
 {
 	int i;
-	for(i=0; i<0; i++)
+	for(i=0; i<10; i++)
 	{
 		;
 	}	
@@ -111,15 +111,12 @@ void wait_iicbus()
 ***************************************/
 void iic_start(void)
 {
-	unsigned char i;
 	SDA =1;
 	wait_iicbus();
 	SCL =1;
 	wait_iicbus();
-	for(i =0; i<1; i++);
 	SDA =0;
 	wait_iicbus();
-	for(i =0; i<1; i++);
 	SCL =0;
 	wait_iicbus();
 }
@@ -132,16 +129,13 @@ void iic_start(void)
 ***************************************/
 void iic_stop(void)
 {
-	unsigned char i;
 	SDA =0;
 	wait_iicbus();
 	SCL =1;
 	wait_iicbus();
-	for(i =0; i<1; i++);
 	SDA =1;
 	wait_iicbus();
-	for(i =0; i<1; i++);
-	SCL =0;
+	SCL =1;
 	wait_iicbus();
 }
 
@@ -154,13 +148,12 @@ void iic_stop(void)
 bit iic_ask_judge(void)
 {
 	bit ask;
-	unsigned char i;
+	SCL =0;
+	wait_iicbus();
 	SDA =1;
 	wait_iicbus();
-	;
-	;
 	SCL =1;
-	for(i =0; i<1; i++);
+	wait_iicbus();
 	ask =SDA;
 	SCL =0;
 	wait_iicbus();
@@ -217,15 +210,14 @@ void iic_ask_not_receive(void)
 void iic_writeachar(unsigned char a)
 {
 	unsigned char i;
+
+	SCL =0;
 	for(i =0; i<=7; i++)
 	{
 		SDA =(bit)(a&0x80);
 		wait_iicbus();
-		;
 		SCL =1;
 		wait_iicbus();
-		;
-		;
 		SCL =0;
 		wait_iicbus();
 		a =a<<1;
@@ -242,6 +234,9 @@ void iic_writeachar(unsigned char a)
 unsigned char iic_readachar(void)
 {
 	unsigned char i, a;
+
+	SCL =0;
+	wait_iicbus();
 	for(i=0; i<=7; i++)
 	{
 		SCL =1;
@@ -265,7 +260,6 @@ unsigned char iic_readachar(void)
 ***************************************/
 bit iic_write_char(unsigned char outside_address, unsigned char inside_address, unsigned char a)
 {
-	unsigned char i;
 	bit ok =1;
 	iic_start();
 	iic_writeachar(outside_address&0xfe);
@@ -282,7 +276,6 @@ bit iic_write_char(unsigned char outside_address, unsigned char inside_address, 
 			}
 		}
 	}
-	for(i=0; i<250; i++);
 	return (ok);	
 }
 
@@ -299,6 +292,7 @@ bit iic_write_char(unsigned char outside_address, unsigned char inside_address, 
 unsigned char iic_read_char(unsigned char outside_address, unsigned char inside_address)
 {
 	unsigned char a =0x45;
+
 	iic_start();
 	iic_writeachar(outside_address&0xfe);
 	if(iic_ask_judge()==0)

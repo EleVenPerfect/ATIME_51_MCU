@@ -12,14 +12,14 @@
       <ToolsetName>MCS-51</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>STC12C5A60S2</Device>
+          <Device>STC15F2K60S2</Device>
           <Vendor>STC</Vendor>
-          <Cpu>IRAM(0-0xFF) XRAM(0-0x3FF) IROM(0-0xEFFF) CLOCK(45000000) MODP2</Cpu>
+          <Cpu>IRAM(0-0xFF) XRAM(0-0x6FF) IROM(0-0xEFF8) CLOCK(35000000) MODP2</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile>"LIB\STARTUP.A51" ("Standard 8051 Startup Code")</StartupFile>
           <FlashDriverDll></FlashDriverDll>
-          <DeviceId>53630</DeviceId>
-          <RegisterFile>REG51.H</RegisterFile>
+          <DeviceId>62472</DeviceId>
+          <RegisterFile>STC15F2K60S2.H</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,8 +33,8 @@
           <BinPath></BinPath>
           <IncludePath></IncludePath>
           <LibPath></LibPath>
-          <RegisterFilePath></RegisterFilePath>
-          <DBRegisterFilePath></DBRegisterFilePath>
+          <RegisterFilePath>STC\</RegisterFilePath>
+          <DBRegisterFilePath>STC\</DBRegisterFilePath>
           <TargetStatus>
             <Error>0</Error>
             <ExitCodeStop>0</ExitCodeStop>
@@ -100,7 +100,7 @@
           <SimDllName>S8051.DLL</SimDllName>
           <SimDllArguments></SimDllArguments>
           <SimDlgDll>DP51.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pDR8051</SimDlgDllArguments>
+          <SimDlgDllArguments>-pDP8051</SimDlgDllArguments>
           <TargetDllName>S8051.DLL</TargetDllName>
           <TargetDllArguments></TargetDllArguments>
           <TargetDlgDll>TP51.DLL</TargetDlgDll>
@@ -253,7 +253,7 @@
               <IRO>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0xf000</Size>
+                <Size>0xeff9</Size>
               </IRO>
               <IRA>
                 <Type>0</Type>
@@ -263,7 +263,7 @@
               <XRA>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x400</Size>
+                <Size>0x700</Size>
               </XRA>
               <XRA512>
                 <Type>0</Type>
