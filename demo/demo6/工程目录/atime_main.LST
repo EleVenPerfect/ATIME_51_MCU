@@ -1,0 +1,72 @@
+C51 COMPILER V9.01   ATIME_MAIN                                                            03/29/2018 22:01:56 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ATIME_MAIN
+OBJECT MODULE PLACED IN atime_main.OBJ
+COMPILER INVOKED BY: C:\Program Files\Keil\C51\BIN\C51.EXE atime_main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\¿âÄ¿Â¼) DEBUG
+                    - OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include "STC12C5A60S2.H"    //¿ÉÒÔÌæ»»REG52.H£¬½¨ÒéÊ¹ÓÃÕâ¸öÍ·ÎÄ¼þ
+   2          #include "atime_pwmpca.h"
+   3          #include "atime_iic.h"
+   4          
+   5          sbit led0 = P1^0;
+   6          sbit led1 = P1^1;
+   7          sbit led2 = P1^2;
+   8          sbit led_gnd = P1^3;
+   9          
+  10          sbit wlw_high = P1^4;
+  11          sbit wlw_k0 = P1^5;
+  12          sbit wlw_k1 = P1^6;
+  13          sbit wlw_k2 = P1^7;
+  14          
+  15          sbit body0 = P3^0;
+  16          sbit body1 = P3^1;
+  17          
+  18          unsigned char body_set = 0;//×´Ì¬´æ´¢£ºÊÇ·ñÊÇÈËÌå¿¿½üÒý·¢µÄµÆ¹âÁÁÆð£¬0´ú±í²»ÊÇ£¬1´ú±íÊÇÒòÎªÈËÌå¿¿½üÒý·¢µÄµ
+             -Æ¹âÁÁÆð
+  19          
+  20          void main()
+  21          {
+  22   1          P1 = 0XFF;
+  23   1          P1M1 = 0x00;
+  24   1          P1M0 = 0x17;//ÉèÖÃP1¶Ë¿ÚÊä³ö×´Ì¬
+  25   1          P3 = 0xff;//ÉèÖÃP3¶Ë¿ÚÊä³ö×´Ì¬
+  26   1          pwm_init( pwm_on, 0, 0x02);
+  27   1          pwm_set(0, 100.0);
+  28   1      
+  29   1          while(1)
+  30   1          {
+  31   2              //Í¨¹ýI2C×ÜÏß¶ÁÈ¡µ±Ç°¹âÇ¿
+  32   2              //¶ÁÈ¡ÎïÁªÍøÄ£¿éÈý×é¿ª¹Ø×´Ì¬
+  33   2              //¶ÁÈ¡ÈËÌå¸ÐÓ¦Ä£¿é×´Ì¬  
+  34   2              //¸ù¾Ý¹âÇ¿ÉèÖÃ×ÜÌå¹âÕÕÁÁ¶È
+  35   2              if( body_set==1 )//Èç¹ûÊÇÒòÎªÈËÌå¿¿½üÒý·¢µÄµÆ¹âÁÁÆð
+  36   2              {
+  37   3                  //µ±ÈËÌå¸ÐÓ¦Ä£¿é±ä»¯Ê±ÐèÒªÖØÐÂÉèÖÃµÆ¹â×´Ì¬
+  38   3                  //µ±ÎïÁªÍøÄ£¿é·¢³öÖ¸ÁîÊ±ÐèÒªÖØÐÂÉèÖÃµÆ¹â×´Ì¬
+  39   3              }
+  40   2              else
+  41   2              {
+  42   3                  //µ±ÎïÁªÍøÄ£¿é·¢³öÖ¸ÁîÊ±ÐèÒªÖØÐÂÉèÖÃµÆ¹â×´Ì¬
+  43   3              }         
+  44   2          }
+  45   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    944    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1      15
+C51 COMPILER V9.01   ATIME_MAIN                                                            03/29/2018 22:01:56 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       2
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
