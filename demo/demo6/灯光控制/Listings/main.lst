@@ -1,0 +1,59 @@
+C51 COMPILER V9.01   MAIN                                                                  04/07/2018 11:19:19 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Program Files\Keil\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Li
+                    -stings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg52.H>
+   2          #include "cejv.h"
+   3          #include "guangqiang.h"
+   4          #include "wulianwang.h"
+   5          #include "led.h"
+   6          #include "kongzhi.c"
+   7          
+   8          void main(void)
+   9          {  
+  10   1          cj_init();
+  11   1          gq_init(); 
+  12   1          led_init();
+  13   1          key_init();
+  14   1          wlw_init();
+  15   1        
+  16   1          while(1)
+  17   1          {   
+  18   2              if(key4==1)
+  19   2              {
+  20   3                  cj_run();
+  21   3                  get_gq_data();
+  22   3                  led_body10cm();
+  23   3                  led_body20cm();
+  24   3                  delayms(100);   //100MS
+  25   3                  continue;
+  26   3              }
+  27   2              else
+  28   2              {
+  29   3                  get_wlw_data();
+  30   3                  get_key_data();
+  31   3                  led_kongzhi();
+  32   3                  delayms(10);    //10MS
+  33   3              }
+  34   2          }
+  35   1      }              
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1273    ----
+   CONSTANT SIZE    =    392    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     20       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      7       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

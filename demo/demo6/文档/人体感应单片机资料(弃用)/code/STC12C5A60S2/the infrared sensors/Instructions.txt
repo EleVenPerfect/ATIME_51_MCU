@@ -1,0 +1,2 @@
+1.Pyroelectric sensor module outputs the analog signal is relatively small, so use op amps to enlarge it. 
+2.Pyroelectric sensor module outputs the analog signal is detected by the microcontroller adc's function.

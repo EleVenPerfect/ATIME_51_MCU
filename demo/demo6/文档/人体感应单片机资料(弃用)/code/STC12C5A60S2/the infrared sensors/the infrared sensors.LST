@@ -1,0 +1,99 @@
+C51 COMPILER V9.00   THE_INFRARED_SENSORS                                                  04/10/2012 14:11:12 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE THE_INFRARED_SENSORS
+OBJECT MODULE PLACED IN the infrared sensors.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE the infrared sensors.c DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          /*********************************************************************************************
+   3          The name of the program£º <Pyroelectric sensor module> ¡¡¡¡ ¡¡
+   4          Date£º¡¡ 2012 04 09
+   5          hardware£ºmcu(stc12c5a60s2),Operational Amplifier(lm324),Pyroelectric sensor module,etc
+   6                                                                          
+   7          /*********************************************************************************************/
+   8          
+   9          #include<stc12c5a60s2.h>  
+  10          #define uchar unsigned char
+  11          #define uint unsigned int
+  12          /*********************************************************************************************/
+  13          void Delay_us(unsigned int x)
+  14          {
+  15   1              while(x--);
+  16   1      }
+  17          /*********************************************************************************************/
+  18          void delay(int x)
+  19          {
+  20   1              uchar i,j;
+  21   1              for(i=0;i<x;i++)
+  22   1                      for(j=0;j<110;j++);
+  23   1      }
+  24          /*********************************************************************************************/
+  25          void ADC_one()       //Only channel P1.0
+  26          {
+  27   1              P1ASF=0x1f;   
+  28   1              ADC_CONTR=0x00; 
+  29   1              AUXR1=0x00;             
+  30   1              ADC_CONTR=0x80;
+  31   1              Delay_us(2);
+  32   1              ADC_CONTR=0x88;     
+  33   1              Delay_us(2);
+  34   1              while(ADC_CONTR==0x88); 
+  35   1              ADC_CONTR=0;     
+  36   1      }
+  37          /*********************************************************************************************/
+  38          
+  39          void main()
+  40          {       
+  41   1              while(1)
+  42   1              {
+  43   2                      float num=0; 
+  44   2                      uint resl=0;
+  45   2                      ADC_one();            
+  46   2                      resl=ADC_RES;
+  47   2                      resl=(resl<<2)+ADC_RESL;
+  48   2                      num=resl/1024.0*5;    
+  49   2                      num=num*1000;
+  50   2      
+  51   2                      if(num>2700) 
+  52   2                      {
+  53   3                              P2=0XEF;//Light-emitting diode is lit
+  54   3                      }
+  55   2                      else 
+C51 COMPILER V9.00   THE_INFRARED_SENSORS                                                  04/10/2012 14:11:12 PAGE 2   
+
+  56   2                              P2=0XFF;        //Light-emitting diode is extinguished
+  57   2              }       
+  58   1      }
+  59          /*********************************************************************************************/
+  60          
+  61          
+  62          
+  63          
+  64          
+  65          
+  66          
+  67          
+  68          
+  69          
+  70          
+  71          
+  72          
+  73          
+  74          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    206    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

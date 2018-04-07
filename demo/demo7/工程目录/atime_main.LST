@@ -1,0 +1,52 @@
+C51 COMPILER V9.01   ATIME_MAIN                                                            04/02/2018 16:17:40 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ATIME_MAIN
+OBJECT MODULE PLACED IN atime_main.OBJ
+COMPILER INVOKED BY: C:\Program Files\Keil\C51\BIN\C51.EXE atime_main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\库目录) DEBUG
+                    - OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include "STC12C5A60S2.H"    //可以替换REG52.H，建议使用这个头文件
+   2          #include "atime_project.c"
+   3          
+   4          
+   5          void main()
+   6          {
+   7   1          io_init();
+   8   1        
+   9   1          while(1)
+  10   1          {
+  11   2              get_gq_data();            //通过I2C总线读取当前光强
+  12   2              get_wlw_status();         //读取物联网模块三组开关状态
+  13   2              get_body_status();        //读取人体感应模块状态  
+  14   2            
+  15   2              set_pwm_status();         //根据光强设置总体光照亮度
+  16   2              set_led_status();         //设置led应输出状态
+  17   2              set_led_output();         //设置led输出
+  18   2            
+  19   2              conversion(gq_int_status);
+  20   2              send_char(wan);
+  21   2              send_char(qian);
+  22   2              send_char(bai);
+  23   2              send_char(shi);
+  24   2              send_char(ge);
+  25   2              send_char('\n');
+  26   2              delay_nms(200); 
+  27   2          }
+  28   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1227    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     31       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
