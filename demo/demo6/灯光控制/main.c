@@ -5,6 +5,7 @@
 #include "led.h"
 #include "kongzhi.c"
 
+
 void main(void)
 {  
 		cj_init();
@@ -21,8 +22,6 @@ void main(void)
 						get_gq_data();
 						led_body10cm();
 						led_body20cm();
-						delayms(100);		//100MS
-						continue;
 				}
 				else
 				{

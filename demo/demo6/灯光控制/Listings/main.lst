@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  04/07/2018 11:19:19 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  04/08/2018 20:33:52 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -15,38 +15,37 @@ line level    source
    5          #include "led.h"
    6          #include "kongzhi.c"
    7          
-   8          void main(void)
-   9          {  
-  10   1          cj_init();
-  11   1          gq_init(); 
-  12   1          led_init();
-  13   1          key_init();
-  14   1          wlw_init();
-  15   1        
-  16   1          while(1)
-  17   1          {   
-  18   2              if(key4==1)
-  19   2              {
-  20   3                  cj_run();
-  21   3                  get_gq_data();
-  22   3                  led_body10cm();
-  23   3                  led_body20cm();
-  24   3                  delayms(100);   //100MS
-  25   3                  continue;
-  26   3              }
-  27   2              else
-  28   2              {
-  29   3                  get_wlw_data();
-  30   3                  get_key_data();
-  31   3                  led_kongzhi();
-  32   3                  delayms(10);    //10MS
-  33   3              }
-  34   2          }
-  35   1      }              
+   8          
+   9          void main(void)
+  10          {  
+  11   1          cj_init();
+  12   1          gq_init(); 
+  13   1          led_init();
+  14   1          key_init();
+  15   1          wlw_init();
+  16   1        
+  17   1          while(1)
+  18   1          {   
+  19   2              if(key4==1)
+  20   2              {
+  21   3                  cj_run();
+  22   3                  get_gq_data();
+  23   3                  led_body10cm();
+  24   3                  led_body20cm();
+  25   3              }
+  26   2              else
+  27   2              {
+  28   3                  get_wlw_data();
+  29   3                  get_key_data();
+  30   3                  led_kongzhi();
+  31   3                  delayms(10);    //10MS
+  32   3              }
+  33   2          }
+  34   1      }              
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1273    ----
+   CODE SIZE        =   1266    ----
    CONSTANT SIZE    =    392    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
